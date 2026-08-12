@@ -59,7 +59,7 @@ PAGES = [
         "canonical": "https://www.lendvue.com/vendor-partners/",
         "og_title": "Generate More Sales with Lendvue Vendor Financing",
         "nav_active": "vendor",
-        "cta_band": False,
+        "cta_band": True,
     },
     {
         "slug": "about",
@@ -81,7 +81,7 @@ PAGES = [
         "canonical": "https://www.lendvue.com/contact/",
         "og_title": "Contact Lendvue",
         "nav_active": "contact",
-        "cta_band": False,
+        "cta_band": True,
     },
     {
         "slug": "apply-now",
@@ -92,7 +92,7 @@ PAGES = [
         "canonical": "https://www.lendvue.com/apply-now/",
         "og_title": "Get Approved Today | Lendvue",
         "nav_active": None,
-        "cta_band": False,
+        "cta_band": True,
         "extra_modals": True,
     },
     {
@@ -139,7 +139,7 @@ PAGES = [
         "canonical": "https://www.lendvue.com/privacy-policy/",
         "og_title": "Privacy Policy | Lendvue",
         "nav_active": None,
-        "cta_band": False,
+        "cta_band": True,
     },
     {
         "slug": "terms-of-use",
@@ -150,7 +150,7 @@ PAGES = [
         "canonical": "https://www.lendvue.com/terms-of-use/",
         "og_title": "Terms of Use | Lendvue",
         "nav_active": None,
-        "cta_band": False,
+        "cta_band": True,
     },
     {
         "slug": "thank-you",
@@ -230,16 +230,20 @@ def render_foot(cfg):
     html = FOOT
     cta_band = ""
     if cfg.get("cta_band"):
-        cta_band = """<div class="cta-band-wrap" style="padding:0 0 72px;">
-  <div class="cta-band container" style="max-width:1152px;">
-    <h2>Ready to grow your business?</h2>
-    <p>Get a free, no-obligation quote in minutes. Soft credit pull only &mdash; it won't affect your score.</p>
-    <div class="btn-actions">
-      <a class="btn btn-primary btn-lg" href="/apply-now/">Apply Now</a>
-      <a class="btn btn-ghost-light btn-lg" href="tel:+18008667231">Call 800-866-7231</a>
+        cta_band = """<section class="contact-strip">
+  <div class="container">
+    <div class="contact-strip-text">
+      <span class="contact-strip-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </span>
+      <div>
+        <h3>Questions? Give us a call at <a href="tel:+18008667231">800-866-7231</a></h3>
+        <p>We are available Monday through Friday, 9AM to 5PM PST</p>
+      </div>
     </div>
+    <a class="btn btn-primary" href="/contact/">Get in Touch</a>
   </div>
-</div>"""
+</section>"""
     extra_modals = ""
     if cfg.get("extra_modals"):
         modal_path = os.path.join(BUILD, "pages", "apply-now-modals.html")

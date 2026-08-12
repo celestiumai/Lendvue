@@ -105,9 +105,11 @@ unless they're above the fold.
   verifiable review count — fabricated rating markup is treated as spam by Google. Add it
   once you have a real number from Google Business Profile or similar (see the comment in
   `_build/schema/home.html`).
-- Copy was lightly corrected in a few spots (a typo in the old business-loans meta
-  description, and the trust badge/testimonial copy updated from "20 years" to the current
-  "24 years" to match your actual 2002–2026 badge).
+- Copy, layout, and imagery were checked page-by-page directly against the live
+  lendvue.com and corrected to match: header/footer, the blue post-hero badge strip,
+  the full-bleed "Our Services" cards, the icon-top "Reasons to Choose Lendvue" grid,
+  the light-blue "Three Simple Steps" card, the testimonials layout, and the CTA/footer
+  bar all follow the real site's structure rather than a stylistic reinterpretation.
 
 ## 6. Editing the site going forward
 
