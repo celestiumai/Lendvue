@@ -2,5 +2,6 @@
 /test/  /  301
 /test    /  301
 
-# Cloudflare Pages custom 404
-/*  /404.html  404
+# Note: no catch-all rule needed for the 404 page — Cloudflare automatically
+# serves the root /404.html for any unmatched path on both Pages and Workers
+# static assets deployments.
