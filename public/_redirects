@@ -1,0 +1,6 @@
+# Retire the old WordPress test/staging page — send any residual traffic home.
+/test/  /  301
+/test    /  301
+
+# Cloudflare Pages custom 404
+/*  /404.html  404

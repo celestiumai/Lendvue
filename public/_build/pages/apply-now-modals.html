@@ -1,0 +1,127 @@
+<!-- Equipment Financing Quote Modal -->
+<div class="modal-overlay" id="modal-equipment-quote" aria-hidden="true">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="eq-modal-title">
+    <button type="button" class="modal-close" data-modal-close aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <h2 id="eq-modal-title">Equipment Financing Quote</h2>
+    <p class="modal-sub">Tell us a bit about your business &mdash; no impact to your credit score.</p>
+    <div class="step-indicator"><span class="is-active"></span><span></span></div>
+    <form data-ajax-form="Equipment Financing Quote" data-redirect="/thank-you-for-your-info/" data-multistep novalidate>
+      <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <div class="form-step is-active" data-step="1">
+        <div class="form-grid">
+          <div class="field"><label for="eq-first">First Name</label><input type="text" id="eq-first" name="first_name" required autocomplete="given-name"></div>
+          <div class="field"><label for="eq-last">Last Name</label><input type="text" id="eq-last" name="last_name" required autocomplete="family-name"></div>
+          <div class="field"><label for="eq-email">Email</label><input type="email" id="eq-email" name="email" required autocomplete="email"></div>
+          <div class="field"><label for="eq-phone">Phone</label><input type="tel" id="eq-phone" name="phone" required autocomplete="tel"></div>
+          <div class="field field-full"><label for="eq-business">Business Name</label><input type="text" id="eq-business" name="business_name" required></div>
+          <div class="field field-full"><label for="eq-amount">Finance Amount ($15,000 minimum)</label><input type="text" id="eq-amount" name="finance_amount" required></div>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn btn-primary btn-block" data-step-next>Continue</button>
+        </div>
+      </div>
+
+      <div class="form-step" data-step="2">
+        <div class="form-grid">
+          <div class="field"><label for="eq-timeinbiz">Time in Business</label>
+            <select id="eq-timeinbiz" name="time_in_business" required>
+              <option value="">Select&hellip;</option>
+              <option>Less than 1 year</option>
+              <option>1&ndash;2 years</option>
+              <option>3&ndash;5 years</option>
+              <option>6&ndash;10 years</option>
+              <option>10+ years</option>
+            </select>
+          </div>
+          <div class="field"><label for="eq-credit">Estimated Personal Credit</label>
+            <select id="eq-credit" name="estimated_credit" required>
+              <option value="">Select&hellip;</option>
+              <option>Excellent (720+)</option>
+              <option>Good (680&ndash;719)</option>
+              <option>Fair (625&ndash;679)</option>
+              <option>Below 625</option>
+            </select>
+          </div>
+          <div class="field"><label for="eq-state">State</label><input type="text" id="eq-state" name="state" required></div>
+          <div class="field"><label for="eq-equipment-type">Equipment Type</label><input type="text" id="eq-equipment-type" name="equipment_type" required></div>
+          <div class="field field-full field-check">
+            <input type="checkbox" id="eq-consent" name="sms_consent" value="yes">
+            <label for="eq-consent" style="margin:0;font-weight:400;">I agree to be contacted by phone, email, or text about my application.</label>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary btn-block">Get My Free Quote</button>
+          <button type="button" class="btn btn-outline btn-block" data-step-prev>Back</button>
+        </div>
+      </div>
+      <div class="form-status" role="status"></div>
+    </form>
+  </div>
+</div>
+
+<!-- Business Loan / Working Capital Quote Modal -->
+<div class="modal-overlay" id="modal-working-capital" aria-hidden="true">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="wc-modal-title">
+    <button type="button" class="modal-close" data-modal-close aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <h2 id="wc-modal-title">Business Loan Quote</h2>
+    <p class="modal-sub">Tell us a bit about your business &mdash; no impact to your credit score.</p>
+    <div class="step-indicator"><span class="is-active"></span><span></span></div>
+    <form data-ajax-form="Business Loan Quote" data-redirect="/thank-you-for-your-info/" data-multistep novalidate>
+      <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <div class="form-step is-active" data-step="1">
+        <div class="form-grid">
+          <div class="field"><label for="wc-first">First Name</label><input type="text" id="wc-first" name="first_name" required autocomplete="given-name"></div>
+          <div class="field"><label for="wc-last">Last Name</label><input type="text" id="wc-last" name="last_name" required autocomplete="family-name"></div>
+          <div class="field"><label for="wc-email">Email</label><input type="email" id="wc-email" name="email" required autocomplete="email"></div>
+          <div class="field"><label for="wc-phone">Phone</label><input type="tel" id="wc-phone" name="phone" required autocomplete="tel"></div>
+          <div class="field field-full"><label for="wc-business">Business Name</label><input type="text" id="wc-business" name="business_name" required></div>
+          <div class="field field-full"><label for="wc-amount">Finance Amount ($15,000 minimum)</label><input type="text" id="wc-amount" name="finance_amount" required></div>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn btn-primary btn-block" data-step-next>Continue</button>
+        </div>
+      </div>
+
+      <div class="form-step" data-step="2">
+        <div class="form-grid">
+          <div class="field"><label for="wc-timeinbiz">Time in Business</label>
+            <select id="wc-timeinbiz" name="time_in_business" required>
+              <option value="">Select&hellip;</option>
+              <option>Less than 1 year</option>
+              <option>1&ndash;2 years</option>
+              <option>3&ndash;5 years</option>
+              <option>6&ndash;10 years</option>
+              <option>10+ years</option>
+            </select>
+          </div>
+          <div class="field"><label for="wc-credit">Estimated Personal Credit</label>
+            <select id="wc-credit" name="estimated_credit" required>
+              <option value="">Select&hellip;</option>
+              <option>Excellent (720+)</option>
+              <option>Good (680&ndash;719)</option>
+              <option>Fair (625&ndash;679)</option>
+              <option>Below 625</option>
+            </select>
+          </div>
+          <div class="field"><label for="wc-state">State</label><input type="text" id="wc-state" name="state" required></div>
+          <div class="field"><label for="wc-revenue">Average Monthly Revenue</label><input type="text" id="wc-revenue" name="monthly_revenue" required></div>
+          <div class="field field-full field-check">
+            <input type="checkbox" id="wc-consent" name="sms_consent" value="yes">
+            <label for="wc-consent" style="margin:0;font-weight:400;">I agree to be contacted by phone, email, or text about my application.</label>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary btn-block">Get My Free Quote</button>
+          <button type="button" class="btn btn-outline btn-block" data-step-prev>Back</button>
+        </div>
+      </div>
+      <div class="form-status" role="status"></div>
+    </form>
+  </div>
+</div>
