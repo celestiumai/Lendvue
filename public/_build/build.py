@@ -3,15 +3,29 @@
 Combines _build/head.html + _build/pages/<slug>.html + _build/foot.html
 into finished pages under the project root (Cloudflare Pages pretty-URL
 layout: <slug>/index.html)."""
+import hashlib
 import os
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BUILD = os.path.join(ROOT, "_build")
 
+
+def file_hash(path, length=8):
+    """Short content hash used to cache-bust /assets/* files that are served
+    with a 1-year `immutable` Cache-Control header (see /_headers). Without
+    this, redeploying new CSS/JS under the same filename leaves every browser
+    (and Cloudflare's edge cache) serving the old cached copy indefinitely."""
+    with open(path, "rb") as f:
+        return hashlib.md5(f.read()).hexdigest()[:length]
+
+
+CSS_VER = file_hash(os.path.join(ROOT, "assets", "css", "style.css"))
+JS_VER = file_hash(os.path.join(ROOT, "assets", "js", "main.js"))
+
 with open(os.path.join(BUILD, "head.html"), encoding="utf-8") as f:
-    HEAD = f.read()
+    HEAD = f.read().replace("$CSS_VER", CSS_VER)
 with open(os.path.join(BUILD, "foot.html"), encoding="utf-8") as f:
-    FOOT = f.read()
+    FOOT = f.read().replace("$JS_VER", JS_VER)
 
 NAV_KEYS = ["equipment", "loans", "vendor", "about", "contact"]
 
@@ -234,7 +248,7 @@ def render_foot(cfg):
   <div class="container">
     <div class="contact-strip-text">
       <span class="contact-strip-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.01"><path d="M6.189,13.611C8.134,15.525 11.097,18.239 13.867,18.257C16.47,18.275 18.2,16.241 18.2,16.241L14.509,12.551L11.539,13.639L6.189,8.29L7.313,5.355L3.76,1.8C3.76,1.8 1.732,3.537 1.7,6.092C1.667,8.809 4.347,11.738 6.189,13.611"/></svg>
       </span>
       <div>
         <h3>Questions? Give us a call at <a href="tel:+18008667231">800-866-7231</a></h3>
