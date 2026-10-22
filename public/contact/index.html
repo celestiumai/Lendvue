@@ -32,7 +32,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <!-- Styles -->
-<link rel="stylesheet" href="/assets/css/style.css?v=845ba3f7">
+<link rel="stylesheet" href="/assets/css/style.css?v=bc3ca4cd">
 
 <!-- Structured data: Organization (site-wide) -->
 <script type="application/ld+json">
@@ -128,35 +128,36 @@
 </header>
 
 <main id="main">
-<section class="hero hero-blue">
-  <div class="container text-center">
-    <div class="hero-inner" style="max-width:640px;margin:0 auto;">
-      <h1>Get in Touch</h1>
-      <p class="lede" style="margin:0 auto;">Have questions about our products or services? Complete the form below and we will respond as soon as possible.</p>
-      <p class="lede" style="margin:12px auto 0;">We are available Monday &ndash; Friday 9AM to 5PM, PST<br><a href="tel:+18008667231" style="color:#fff;font-weight:700;">800-866-7231</a></p>
+<section class="contact-hero">
+  <div class="container">
+    <div class="contact-card">
+      <div class="contact-card-panel">
+        <h1>Get in Touch</h1>
+        <p>Have questions about our products or services? Complete the form below and we will respond as soon as possible.</p>
+        <p>We are available Monday &ndash; Friday 9AM to 5PM, PST</p>
+        <p><a href="tel:+18008667231">800-866-7231</a></p>
+        <form class="contact-form" data-ajax-form="Contact" data-redirect="/thank-you/" novalidate>
+          <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="gf-grid">
+            <div class="gf-field gf-half"><label class="visually-hidden" for="c-name">First Name (required)</label><input type="text" id="c-name" name="first_name" placeholder="First Name" required autocomplete="given-name"></div>
+            <div class="gf-field gf-half"><label class="visually-hidden" for="c-email">Email (required)</label><input type="email" id="c-email" name="email" placeholder="Email" required autocomplete="email"></div>
+            <div class="gf-field gf-full"><label class="visually-hidden" for="c-subject">Subject (required)</label><input type="text" id="c-subject" name="subject" placeholder="Subject" required></div>
+            <div class="gf-field gf-full"><label class="visually-hidden" for="c-message">Message (required)</label><textarea id="c-message" name="message" placeholder="Type your message here..." required></textarea></div>
+          </div>
+          <div class="gf-footer gf-footer-left">
+            <button type="submit" class="gf-button">Submit</button>
+          </div>
+          <div class="form-status" role="status"></div>
+        </form>
+      </div>
+      <div class="contact-card-photo" role="img" aria-label="Lendvue client on the phone at his job site"></div>
     </div>
   </div>
 </section>
 
-<section aria-labelledby="contact-heading">
-  <div class="container" style="max-width:640px;">
-    <h2 id="contact-heading" class="visually-hidden">Contact form</h2>
-    <div class="inline-card">
-      <form data-ajax-form="Contact" data-redirect="/thank-you/" novalidate>
-        <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <div class="form-grid">
-          <div class="field field-full"><label for="c-name">First Name</label><input type="text" id="c-name" name="first_name" required autocomplete="given-name"></div>
-          <div class="field field-full"><label for="c-email">Email</label><input type="email" id="c-email" name="email" required autocomplete="email"></div>
-          <div class="field field-full"><label for="c-subject">Subject</label><input type="text" id="c-subject" name="subject" required></div>
-          <div class="field field-full"><label for="c-message">Message</label><textarea id="c-message" name="message" rows="5" required></textarea></div>
-        </div>
-        <div class="form-actions">
-          <button type="submit" class="btn btn-primary btn-block">Send Message</button>
-          <p class="form-note">By submitting, you agree to our <a href="/privacy-policy/">Privacy Policy</a> and <a href="/terms-of-use/">Terms of Use</a>.</p>
-        </div>
-        <div class="form-status" role="status"></div>
-      </form>
-    </div>
+<section class="contact-map" aria-label="Map to Lendvue's office">
+  <div class="container container-xl">
+    <iframe title="Lendvue office, 11801 Pierce St #200, Riverside, CA 92505" src="https://www.google.com/maps?q=Lendvue%2C+11801+Pierce+St+%23200%2C+Riverside%2C+CA+92505&amp;z=11&amp;output=embed" width="1400" height="300" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
   </div>
 </section>
 
