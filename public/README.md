@@ -41,31 +41,28 @@ can keep editing it directly as code going forward.
 
 ## 2. Making the contact forms work (Resend)
 
-Gravity Forms needed a full WordPress/PHP backend to run, which conflicts with the "no
-WordPress" goal. Instead, every form (Apply Now's two quote forms, the Contact form, and
-the Vendor Partner application) submits via JavaScript to `/functions/api/submit-form.js`,
-a Cloudflare Pages Function that emails the submission to your inbox using
-[Resend](https://resend.com) (free tier: 100 emails/day / 3,000/month — plenty for lead
-volume from a site like this). This replaces Gravity Forms entirely; every entry just
-becomes an email.
+The site is deployed as a **Cloudflare Worker** (`wrangler.jsonc` at the repo root).
+Pages in `public/` are served as static assets; only `/api/submit-form` runs code
+(`worker/submit-form.js`), which emails each submission to you via
+[Resend](https://resend.com) (free tier: 100 emails/day). `public/.assetsignore` keeps
+`_build/`, `_incoming/` and this README from being published.
 
 To activate it:
 
-1. Create a free Resend account and verify a sending domain (e.g. `lendvue.com` or a
-   subdomain like `mail.lendvue.com`) by adding the DNS records Resend gives you.
-2. Grab an API key from Resend.
-3. In Cloudflare Pages → your project → **Settings → Environment variables**, add
-   (for both Production and Preview):
-   - `RESEND_API_KEY` — the key from step 2 (mark it "Secret")
-   - `TO_EMAIL` — the inbox that should receive leads (e.g. `info@lendvue.com`)
-   - `FROM_EMAIL` — an address on the domain you verified (e.g. `forms@lendvue.com`)
-   - `ALLOWED_ORIGIN` — `https://www.lendvue.com`
-4. Redeploy. Test every form once live — Cloudflare Pages Functions only run on the
-   deployed site, not from a plain local file preview.
+1. Create a free Resend account and verify `lendvue.com` by adding the DNS records
+   Resend gives you (add them next to your existing records — don't replace any).
+2. Create an API key in Resend (sending access). It starts with `re_`.
+3. Cloudflare dashboard -> Workers & Pages -> **lendvue** -> Settings -> Variables and
+   Secrets, add:
+   - `RESEND_API_KEY` — type **Secret**, the key from step 2
+   - `TO_EMAIL` — inbox that receives leads (e.g. `info@lendvue.com`)
+   - `FROM_EMAIL` — address on the verified domain (e.g. `forms@lendvue.com`)
+   `ALLOWED_ORIGIN` is already set in `wrangler.jsonc` (www.lendvue.com, lendvue.com and
+   the workers.dev preview). Add any new domain there.
+4. Submit each form once to confirm the emails arrive.
 
-If you'd rather not deal with Resend at all, the same `/api/submit-form` endpoint can be
-swapped for a zero-code service like Web3Forms or Formspree — just change the `fetch()`
-URL in `assets/js/main.js`.
+Deploys: every push to `main` on GitHub is built and deployed by Cloudflare
+(Workers Builds, deploy command `npx wrangler deploy`, root directory = repo root).
 
 ## 3. Chatbot (Voiceflow)
 

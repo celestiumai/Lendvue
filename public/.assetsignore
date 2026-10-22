@@ -1,0 +1,5 @@
+# Not part of the public website — never upload these as static assets
+_build
+_incoming
+functions
+README.md

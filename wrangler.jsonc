@@ -1,0 +1,22 @@
+// Cloudflare Worker config for www.lendvue.com.
+// Static site = ./public (built by `python3 public/_build/build.py`), served as assets.
+// Only /api/* runs Worker code (the form -> email handler in ./worker).
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "lendvue",
+  "main": "worker/index.js",
+  "compatibility_date": "2025-09-01",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/api/*"]
+  },
+  // Non-secret settings. RESEND_API_KEY (secret), TO_EMAIL and FROM_EMAIL are set in the
+  // Cloudflare dashboard (Settings -> Variables and Secrets); keep_vars preserves them on deploy.
+  "vars": {
+    "ALLOWED_ORIGIN": "https://www.lendvue.com,https://lendvue.com,https://lendvue.brian-b4c.workers.dev"
+  },
+  "keep_vars": true,
+  "observability": { "enabled": true }
+}

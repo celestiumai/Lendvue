@@ -1,11 +1,11 @@
 /**
- * Cloudflare Pages Function — POST /api/submit-form
+ * Form handler — POST /api/submit-form (called from worker/index.js)
  *
  * Receives JSON from any form on the site and emails it via Resend
  * (https://resend.com). Replaces Gravity Forms / WordPress mail entirely.
  *
- * REQUIRED environment variables (set in Cloudflare Pages ->
- * Settings -> Environment variables -> Production & Preview):
+ * REQUIRED variables (Cloudflare dashboard -> Workers & Pages -> lendvue ->
+ * Settings -> Variables and Secrets):
  *   RESEND_API_KEY   - secret, from resend.com
  *   TO_EMAIL          - inbox that should receive leads, e.g. info@lendvue.com
  *   FROM_EMAIL        - a verified sending address on your Resend domain,
@@ -13,11 +13,12 @@
  *                        verified in Resend)
  *
  * Optional:
- *   ALLOWED_ORIGIN     - defaults to https://www.lendvue.com
+ *   ALLOWED_ORIGIN     - comma-separated list of site origins allowed to post
+ *                        (set in wrangler.jsonc)
  */
 
 const MAX_FIELD_LENGTH = 2000;
-const MAX_FIELDS = 40;
+const MAX_FIELDS = 60;
 
 function escapeHtml(str) {
   return String(str)
@@ -41,18 +42,35 @@ function jsonResponse(body, status, origin) {
   });
 }
 
+function allowedOrigins(env) {
+  return (env.ALLOWED_ORIGIN || "https://www.lendvue.com")
+    .split(",").map((o) => o.trim()).filter(Boolean);
+}
+function corsOrigin(request, env) {
+  const list = allowedOrigins(env);
+  const origin = request.headers.get("Origin") || "";
+  return list.includes(origin) ? origin : list[0];
+}
+
 export async function onRequestOptions(context) {
-  const origin = context.env.ALLOWED_ORIGIN || "https://www.lendvue.com";
-  return jsonResponse({ ok: true }, 204, origin);
+  return new Response(null, {
+    status: 204,
+    headers: {
+      "Access-Control-Allow-Origin": corsOrigin(context.request, context.env),
+      "Access-Control-Allow-Methods": "POST, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type"
+    }
+  });
 }
 
 export async function onRequestPost(context) {
   const { request, env } = context;
-  const allowedOrigin = env.ALLOWED_ORIGIN || "https://www.lendvue.com";
+  const allowedOrigin = corsOrigin(request, env);
 
   // Basic origin check (defense in depth — not the only safeguard)
   const origin = request.headers.get("Origin") || "";
-  if (origin && origin !== allowedOrigin && !origin.includes("localhost")) {
+  const isLocal = /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin);
+  if (origin && !allowedOrigins(env).includes(origin) && !isLocal) {
     return jsonResponse({ error: "Forbidden" }, 403, allowedOrigin);
   }
 
@@ -104,6 +122,10 @@ export async function onRequestPost(context) {
     </div>
   `;
 
+  if (!env.RESEND_API_KEY) {
+    console.error("RESEND_API_KEY is not set");
+    return jsonResponse({ error: "Form email is not configured yet" }, 503, allowedOrigin);
+  }
   const toEmail = env.TO_EMAIL || "info@lendvue.com";
   const fromEmail = env.FROM_EMAIL || "forms@lendvue.com";
 
@@ -138,6 +160,5 @@ export async function onRequestPost(context) {
 
 // Reject any other method
 export async function onRequestGet(context) {
-  const origin = context.env.ALLOWED_ORIGIN || "https://www.lendvue.com";
-  return jsonResponse({ error: "Method not allowed" }, 405, origin);
+  return jsonResponse({ error: "Method not allowed" }, 405, corsOrigin(context.request, context.env));
 }

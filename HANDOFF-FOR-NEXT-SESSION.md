@@ -2,7 +2,7 @@
 
 Read this first. This project is a from-scratch static rebuild of **www.lendvue.com**
 (currently WordPress) as plain HTML/CSS/JS — no WordPress, no theme bloat, no plugins —
-built for Cloudflare Pages, using best SEO practices, with working contact/apply forms.
+deployed as a Cloudflare Worker (static assets + one /api route; see wrangler.jsonc), using best SEO practices, with working contact/apply forms.
 This zip is a snapshot of that work so far, handed off from a previous session.
 
 ## Start here
@@ -117,4 +117,5 @@ after deploy.
   rebuild.
 - Current Inventory: live embeds www.currentinventory.net, which has lapsed (GoDaddy
   parking page). The embed was dropped; ask the owner if there is a replacement feed.
-- Forms need RESEND_API_KEY / TO_EMAIL / FROM_EMAIL set in Cloudflare Pages (see README).
+- Forms need RESEND_API_KEY (secret) / TO_EMAIL / FROM_EMAIL set on the **lendvue Worker**
+  (Settings -> Variables and Secrets). Preview URL: https://lendvue.brian-b4c.workers.dev/
