@@ -32,7 +32,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <!-- Styles -->
-<link rel="stylesheet" href="/assets/css/style.css?v=bd29efce">
+<link rel="stylesheet" href="/assets/css/style.css?v=cdc6c6a7">
 
 <!-- Structured data: Organization (site-wide) -->
 <script type="application/ld+json">
@@ -226,22 +226,41 @@
 
 <script src="/assets/js/main.js?v=49697e84" defer></script>
 
-<!-- Voiceflow chat widget -->
+<!-- Voiceflow chat widget (same configuration as the live WordPress site) -->
 <script type="text/javascript">
-  (function(d, t) {
-    var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-    v.onload = function() {
+  (function (d, t) {
+    var showMsgsTag = "showMsgs", vfStateTag = "vfState", v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+    function store(k, val) { try { localStorage.setItem(k, val); } catch (e) {} }
+    function read(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+    window.addEventListener("message", function (event) {
+      if (typeof event.data !== "string") return;
+      var data; try { data = JSON.parse(event.data); } catch (e) { return; }
+      if (data.type === "voiceflow:open") { store(showMsgsTag, "false"); store(vfStateTag, "open"); }
+      else if (data.type === "voiceflow:close") { store(vfStateTag, "close"); }
+    }, false);
+    v.onload = function () {
       window.voiceflow.chat.load({
-        verify: { projectID: '64d40070fec0d1000682be7e' },
-        url: 'https://general-runtime.voiceflow.com',
-        versionID: 'production',
-        voice: { url: 'https://runtime-api.voiceflow.com' }
+        verify: { projectID: "64d40070fec0d1000682be7e" },
+        url: "https://general-runtime.voiceflow.com",
+        versionID: "production",
+        assistant: { stylesheet: "https://inviqasolutions.com/clientflow/style.css" }
+      }).then(function () {
+        window.voiceflow.chat.proactive.clear();
+        if (read(showMsgsTag) !== "false") {
+          window.voiceflow.chat.proactive.push({
+            type: "text",
+            payload: { message: "Hey there! \uD83D\uDC4B Are you interested in Equipment Financing or a Business Loan?" }
+          });
+        }
+        if (read(vfStateTag) === "open") {
+          setTimeout(function () { window.voiceflow.chat.open(); store(showMsgsTag, "false"); }, 5000);
+        }
       });
     };
     v.src = "https://cdn.voiceflow.com/widget/bundle.mjs";
     v.type = "text/javascript";
     s.parentNode.insertBefore(v, s);
-  })(document, 'script');
+  })(document, "script");
 </script>
 </body>
 </html>

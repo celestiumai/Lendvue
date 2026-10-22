@@ -152,6 +152,7 @@ section { padding: 40px 0; }
 }
 @media (max-width: 959px) { .hero { padding: 80px 0; } }
 .hero.has-image { background-size: cover; background-position: center; background-repeat: no-repeat; }
+.hero.has-image.hero-top { background-position: center top; }  /* live: uk-background-top-center (home, landing, thank-you) */
 .hero.hero-blue { background: linear-gradient(90deg, #1B4B80 0%, #2E8FE0 100%); }
 .hero .container { position: relative; z-index: 2; }
 .hero-inner { max-width: 580px; }            /* homepage: half of the 1200 grid */
@@ -633,7 +634,7 @@ figure.testimonial-card, .testimonial-card blockquote { margin: 0; }
 .landing-header .main-nav ul a { font-size: 16px; line-height: 24px; height: auto; color: #000; }
 .landing-header .main-nav ul { gap: 20px; }
 .landing-header .main-nav ul a:hover { color: #666; }
-.landing-hero { padding: 140px 0; background-position: center; }
+.landing-hero { padding: 140px 0; }
 .landing-card { width: 580px; max-width: 100%; border-radius: 20px; padding: 20px; color: #fff;
   background: linear-gradient(90deg, #366797 0%, #0388F7 74%); box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
 .landing-card h1 { font-size: 32px; line-height: 41.6px; margin: 0 0 20px; }
