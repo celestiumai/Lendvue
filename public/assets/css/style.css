@@ -565,3 +565,51 @@ figure.testimonial-card, .testimonial-card blockquote { margin: 0; }
 }
 @media (max-width: 560px) { .contact-form .gf-grid { grid-template-columns: 1fr; } }
 .contact-map iframe { display: block; width: 100%; height: 300px; border: 0; }
+
+/* ---------- Apply Now (live: gradient band with 213px white strip, 1200 card holding two
+   540x290 #366796 program panels, 80px white icons) ---------- */
+.apply-band { position: relative; padding: 70px 0; background: linear-gradient(to right, #366797 0%, #0388F7 100%); }
+.apply-band::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 213.6px; background: #fff; z-index: 1; }
+@media (max-width: 959px) { .apply-band { padding: 40px 0; } }
+.apply-band .container { position: relative; z-index: 2; }
+.apply-head { display: grid; grid-template-columns: 3fr 2fr; margin: 0 0 40px -40px; }
+.apply-head > * { padding-left: 40px; }
+.apply-head h1 { font-size: 42px; line-height: 50.4px; margin: 0 0 20px; }
+.apply-head .lede { color: #fff; font-size: 24px; line-height: 36px; margin: 0; max-width: none; }
+.apply-badges { display: flex; gap: 15px; align-items: flex-start; padding-top: 41px; }
+.apply-badges img:first-child { margin-left: 15px; }
+.program-card { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.program { background: var(--color-navy-light); border-radius: 20px; padding: 40px; box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  display: grid; grid-template-columns: 1fr 80px; gap: 40px; align-items: center; color: #fff; }
+.program h2 { color: #fff; font-size: 24px; line-height: 33.6px; text-transform: uppercase; margin: 0 0 20px; }
+.program p { color: #fff; margin: 0 0 20px; }
+.program .icon { width: 80px; height: 80px; color: #fff; }
+.btn.btn-sm { line-height: 38px; padding: 0 30px; }
+@media (max-width: 959px) {
+  .apply-head { grid-template-columns: 1fr; margin-left: 0; } .apply-head > * { padding-left: 0; }
+  .apply-badges { padding-top: 20px; } .apply-badges img:first-child { margin-left: 0; }
+  .apply-head h1 { font-size: 34px; line-height: 42px; }
+  .program-card { grid-template-columns: 1fr; gap: 20px; }
+}
+@media (max-width: 480px) { .program { grid-template-columns: 1fr; padding: 28px 24px; } .program .icon { display: none; } }
+
+/* ---------- Quote modals (live UIkit modal: 1200px, radius 20, 30px padding, 60% black overlay) ---------- */
+.modal-overlay { background: rgba(0,0,0,0.6); align-items: flex-start; padding: 50px 20px; }
+.modal-box { max-width: 1200px; border-radius: 20px; padding: 30px; max-height: none; overflow: visible; box-shadow: none; margin: auto 0; }
+.modal-box h2 { color: var(--color-navy-light); font-size: 32px; line-height: 1.3; margin: 0 0 20px; padding-right: 40px; }
+.modal-note { font-size: 15px; color: #000; margin: 0 0 20px; }
+.modal-close { background: transparent; top: 10px; right: 10px; color: #999; }
+.modal-close:hover { color: #666; }
+.modal-close svg { width: 20px; height: 20px; }
+.gf-grid.gf-grid-2 { grid-template-columns: 1fr 1fr; gap: 16px 22px; }
+.gf-grid-2 .gf-field.gf-half { grid-column: span 1; }
+.gf-grid-2 .gf-field.gf-full { grid-column: 1 / -1; }
+.gf-field select { height: 35px; padding: 0 8px; cursor: pointer; }
+.gf-field.gf-labelled label { display: block; font-size: 15px; font-weight: 600; color: #000; margin: 0 0 8px; }
+.gf-checks label { display: flex; gap: 8px; align-items: flex-start; font-size: 15px; line-height: 23px; color: #000; margin: 0 0 1px 7px; cursor: pointer; }
+.gf-checks input { width: 13px; height: 13px; margin-top: 5px; flex-shrink: 0; }
+.modal-box .gf-footer { margin-top: 20px; }
+.gf-button-secondary { background: #fff; color: #000; box-shadow: inset 0 0 0 1px #ccc; margin-right: 8px; }
+.gf-button-secondary:hover { background: #f5f5f5; }
+@media (max-width: 640px) { .gf-grid.gf-grid-2 { grid-template-columns: 1fr; } .gf-grid-2 .gf-field.gf-half { grid-column: auto; } .modal-box h2 { font-size: 26px; } .modal-overlay { padding: 20px 10px; } .modal-box { padding: 24px 18px; } }
+.program-card { padding-bottom: 60px; }  /* live card has a trailing empty <p> (20px) */

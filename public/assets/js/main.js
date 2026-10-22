@@ -47,7 +47,7 @@
     modal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
     openModalEl = modal;
-    var firstField = modal.querySelector("input, select, textarea, button");
+    var firstField = modal.querySelector(".form-step.is-active input:not(.honeypot), form input:not(.honeypot), select, textarea, button");
     if (firstField) firstField.focus();
   }
   function closeModal(modal) {
@@ -78,6 +78,10 @@
     if (e.key === "Escape" && openModalEl) closeModal(openModalEl);
   });
 
+  var HASH_MODALS = { "#equipmentfinancing": "equipment-quote", "#equipment-quote": "equipment-quote",
+                      "#workingcapital": "working-capital", "#working-capital": "working-capital" };
+  if (HASH_MODALS[window.location.hash]) openModal(HASH_MODALS[window.location.hash]);
+
   /* ---------------- Multi-step forms ----------------
      Wrap steps in <div class="form-step" data-step="1">, use
      [data-step-next] / [data-step-prev] buttons to move between them.
@@ -92,16 +96,55 @@
       indicatorDots.forEach(function (d, i) { d.classList.toggle("is-active", i <= index); });
       current = index;
     }
+    function stepValid(step) {
+      var bad = [];
+      step.querySelectorAll("input, select, textarea").forEach(function (f) {
+        if (f.classList.contains("honeypot") || f.type === "hidden") return;
+        var invalid = !f.checkValidity();
+        f.classList.toggle("is-invalid", invalid);
+        f.setAttribute("aria-invalid", invalid ? "true" : "false");
+        if (invalid) bad.push(f);
+      });
+      if (bad.length) {
+        var status = form.querySelector(".form-status");
+        if (status) {
+          status.textContent = bad[0].validity.rangeUnderflow
+            ? "Please enter a value of at least " + Number(bad[0].min).toLocaleString() + "."
+            : "Please fill out all required fields.";
+          status.className = "form-status is-visible error";
+        }
+        bad[0].focus();
+        return false;
+      }
+      var st = form.querySelector(".form-status");
+      if (st) st.className = "form-status";
+      return true;
+    }
+    // Like Gravity Forms "partial entries": email the step-1 contact details as soon as
+    // they're entered, so an abandoned step 2 still leaves a lead in the inbox.
+    function sendPartial() {
+      if (!form.hasAttribute("data-partial-step1") || form.dataset.partialSent) return;
+      var hp = form.querySelector('input[name="website"]');
+      if (hp && hp.value) return;
+      var payload = { formName: (form.getAttribute("data-ajax-form") || "Form") + " (step 1 of 2 - partial)", pageUrl: window.location.href };
+      steps[0].querySelectorAll("input, select, textarea").forEach(function (f) {
+        if (!f.name || f.name === "website") return;
+        if (f.type === "checkbox") { if (f.checked) payload[f.name] = f.value; return; }
+        payload[f.name] = f.value;
+      });
+      form.dataset.partialSent = "1";
+      fetch("/api/submit-form", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload), keepalive: true })
+        .catch(function () { delete form.dataset.partialSent; });
+    }
     form.addEventListener("click", function (e) {
       var next = e.target.closest("[data-step-next]");
       var prev = e.target.closest("[data-step-prev]");
       if (next) {
         e.preventDefault();
-        var fields = steps[current].querySelectorAll("[required]");
-        var valid = true;
-        fields.forEach(function (f) { if (!f.checkValidity()) { f.reportValidity(); valid = false; } });
-        if (!valid) return;
+        if (!stepValid(steps[current])) return;
+        if (current === 0) sendPartial();
         if (current < steps.length - 1) show(current + 1);
+        var box = form.closest(".modal-box"); if (box) box.scrollTop = 0;
       }
       if (prev) {
         e.preventDefault();

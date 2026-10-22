@@ -1,126 +1,85 @@
-<!-- Equipment Financing Quote Modal -->
+<!-- Generated from the live Gravity Forms (Apply Now - Equipment Financing / Working Capital). -->
 <div class="modal-overlay" id="modal-equipment-quote" aria-hidden="true">
   <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="eq-modal-title">
     <button type="button" class="modal-close" data-modal-close aria-label="Close">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
-    <h2 id="eq-modal-title">Equipment Financing Quote</h2>
-    <p class="modal-sub">Tell us a bit about your business &mdash; no impact to your credit score.</p>
-    <div class="step-indicator"><span class="is-active"></span><span></span></div>
-    <form data-ajax-form="Equipment Financing Quote" data-redirect="/thank-you-for-your-info/" data-multistep novalidate>
+    <h2 id="eq-modal-title">About You</h2>
+    <p class="modal-note">Please note that your information is saved as you go &mdash; if we get disconnected, we can still follow up with you.</p>
+    <form data-ajax-form="Apply Now - Equipment Financing" data-redirect="/thank-you-for-your-info/" data-multistep data-partial-step1 novalidate>
       <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
-
-      <div class="form-step is-active" data-step="1">
-        <div class="form-grid">
-          <div class="field"><label for="eq-first">First Name</label><input type="text" id="eq-first" name="first_name" required autocomplete="given-name"></div>
-          <div class="field"><label for="eq-last">Last Name</label><input type="text" id="eq-last" name="last_name" required autocomplete="family-name"></div>
-          <div class="field"><label for="eq-email">Email</label><input type="email" id="eq-email" name="email" required autocomplete="email"></div>
-          <div class="field"><label for="eq-phone">Phone</label><input type="tel" id="eq-phone" name="phone" required autocomplete="tel"></div>
-          <div class="field field-full"><label for="eq-business">Business Name</label><input type="text" id="eq-business" name="business_name" required></div>
-          <div class="field field-full"><label for="eq-amount">Finance Amount ($15,000 minimum)</label><input type="text" id="eq-amount" name="finance_amount" required></div>
-        </div>
-        <div class="form-actions">
-          <button type="button" class="btn btn-primary btn-block" data-step-next>Continue</button>
-        </div>
-      </div>
-
-      <div class="form-step" data-step="2">
-        <div class="form-grid">
-          <div class="field"><label for="eq-timeinbiz">Time in Business</label>
-            <select id="eq-timeinbiz" name="time_in_business" required>
-              <option value="">Select&hellip;</option>
-              <option>Less than 1 year</option>
-              <option>1&ndash;2 years</option>
-              <option>3&ndash;5 years</option>
-              <option>6&ndash;10 years</option>
-              <option>10+ years</option>
-            </select>
+        <div class="form-step is-active" data-step="1">
+          <div class="gf-grid gf-grid-2">
+          <div class="gf-field gf-half"><label class="visually-hidden" for="eq-first">First Name (required)</label><input type="text" id="eq-first" name="first_name" placeholder="First Name" required autocomplete="given-name"></div>
+          <div class="gf-field gf-half"><label class="visually-hidden" for="eq-last">Last Name (required)</label><input type="text" id="eq-last" name="last_name" placeholder="Last Name" required autocomplete="family-name"></div>
+          <div class="gf-field gf-half"><label class="visually-hidden" for="eq-email">Email (required)</label><input type="email" id="eq-email" name="email" placeholder="Email" required autocomplete="email"></div>
+          <div class="gf-field gf-half"><label class="visually-hidden" for="eq-phone">Phone (required)</label><input type="tel" id="eq-phone" name="phone" placeholder="Phone" required autocomplete="tel"></div>
+          <div class="gf-field gf-full"><label class="visually-hidden" for="eq-business">Business Name (required)</label><input type="text" id="eq-business" name="business_name" placeholder="Business Name" required autocomplete="organization"></div>
+          <div class="gf-field gf-full"><label class="visually-hidden" for="eq-amount">Finance Amount ($15,000 minimum) (required)</label><input type="number" id="eq-amount" name="finance_amount" placeholder="Finance Amount ($15,000 minimum)" min="15000" step="1" inputmode="numeric" required></div>
+          <div class="gf-field gf-full"><label class="visually-hidden" for="eq-timing">How soon do you need financing? (required)</label><select id="eq-timing" name="funding_timeline" required><option value="">How soon do you need financing?</option><option>Need funding ASAP</option><option>Within 30 days</option><option>Within 90 days</option><option>Just gathering info</option></select></div>
+          <div class="gf-field gf-full gf-checks">
+            <label><input type="checkbox" name="sms_transactional" value="yes"> I agree to receive Transactional SMS messages from Lendvue related to my appointments.</label>
+            <label><input type="checkbox" name="sms_promotional" value="yes"> I agree to receive Promotional SMS messages from Lendvue about new services or offers.</label>
           </div>
-          <div class="field"><label for="eq-credit">Estimated Personal Credit</label>
-            <select id="eq-credit" name="estimated_credit" required>
-              <option value="">Select&hellip;</option>
-              <option>Excellent (720+)</option>
-              <option>Good (680&ndash;719)</option>
-              <option>Fair (625&ndash;679)</option>
-              <option>Below 625</option>
-            </select>
           </div>
-          <div class="field"><label for="eq-state">State</label><input type="text" id="eq-state" name="state" required></div>
-          <div class="field"><label for="eq-equipment-type">Equipment Type</label><input type="text" id="eq-equipment-type" name="equipment_type" required></div>
-          <div class="field field-full field-check">
-            <input type="checkbox" id="eq-consent" name="sms_consent" value="yes">
-            <label for="eq-consent" style="margin:0;font-weight:400;">I agree to be contacted by phone, email, or text about my application.</label>
+          <div class="gf-footer gf-footer-left"><button type="button" class="gf-button" data-step-next>Next</button></div>
+        </div>
+        <div class="form-step" data-step="2">
+          <div class="gf-grid gf-grid-2">
+          <div class="gf-field gf-half gf-labelled"><label for="eq-years">How many years have you been in business?</label><select id="eq-years" name="years_in_business" required><option value="">Choose from below...</option><option>Startup/Less than a year</option><option>1-2 Years</option><option>3-5 Years</option><option>5+ Years</option></select></div>
+          <div class="gf-field gf-half gf-labelled"><label for="eq-prior">Have you secured equipment financing under the business name in the past?</label><select id="eq-prior" name="prior_equipment_financing" required><option value="">Choose from below...</option><option>Yes</option><option>No</option></select></div>
+          <div class="gf-field gf-half gf-labelled"><label for="eq-income">Business income reported last year?</label><select id="eq-income" name="business_income_last_year" required><option value="">Choose from below...</option><option>No income filed</option><option>Under $100K</option><option>$100k - $250K</option><option>$250K - $1MM</option><option>$1MM+</option><option>$5MM+</option></select></div>
+          <div class="gf-field gf-half gf-labelled"><label for="eq-credit">What range is your personal credit score?</label><select id="eq-credit" name="credit_score_range" required><option value="">Choose from below...</option><option>750+</option><option>700+</option><option>650+</option><option>600+</option><option>Below 600</option></select></div>
+          <div class="gf-field gf-half gf-labelled"><label for="eq-mortgage">Do you have an open mortgage account on your personal credit?</label><select id="eq-mortgage" name="open_mortgage" required><option value="">Choose from below...</option><option>Yes</option><option>No</option></select></div>
+          <div class="gf-field gf-half gf-labelled"><label for="eq-auto">Do you have an auto loan on your personal credit?</label><select id="eq-auto" name="auto_loan" required><option value="">Choose from below...</option><option>Yes</option><option>No</option></select></div>
+          <div class="gf-field gf-half gf-labelled"><label for="eq-cards">Do you have an open credit card(s) on your personal credit?</label><select id="eq-cards" name="open_credit_cards" required><option value="">Choose from below...</option><option>Yes</option><option>No</option></select></div>
+          <div class="gf-field gf-half gf-labelled"><label for="eq-bk">Any bankruptcies within the last 10 years?</label><select id="eq-bk" name="bankruptcy_10yr" required><option value="">Choose from below...</option><option>Yes</option><option>No</option></select></div>
+          <div class="gf-field gf-half gf-labelled"><label for="eq-liens">Are there any open tax liens or judgements?</label><select id="eq-liens" name="tax_liens_judgements" required><option value="">Choose from below...</option><option>Yes</option><option>No</option></select></div>
+          <div class="gf-field gf-half gf-labelled"><label for="eq-childsupport">Any child support collections reported on credit?</label><select id="eq-childsupport" name="child_support_collections" required><option value="">Choose from below...</option><option>Yes</option><option>No</option></select></div>
           </div>
+          <div class="gf-footer gf-footer-left"><button type="button" class="gf-button gf-button-secondary" data-step-prev>Previous</button> <button type="submit" class="gf-button">Apply Now</button></div>
         </div>
-        <div class="form-actions">
-          <button type="submit" class="btn btn-primary btn-block">Get My Free Quote</button>
-          <button type="button" class="btn btn-outline btn-block" data-step-prev>Back</button>
-        </div>
-      </div>
       <div class="form-status" role="status"></div>
     </form>
   </div>
 </div>
 
-<!-- Business Loan / Working Capital Quote Modal -->
 <div class="modal-overlay" id="modal-working-capital" aria-hidden="true">
   <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="wc-modal-title">
     <button type="button" class="modal-close" data-modal-close aria-label="Close">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
-    <h2 id="wc-modal-title">Business Loan Quote</h2>
-    <p class="modal-sub">Tell us a bit about your business &mdash; no impact to your credit score.</p>
-    <div class="step-indicator"><span class="is-active"></span><span></span></div>
-    <form data-ajax-form="Business Loan Quote" data-redirect="/thank-you-for-your-info/" data-multistep novalidate>
+    <h2 id="wc-modal-title">About You</h2>
+    <p class="modal-note">Please note that your information is saved as you go &mdash; if we get disconnected, we can still follow up with you.</p>
+    <form data-ajax-form="Apply Now - Working Capital" data-redirect="/thank-you-for-your-info/" data-multistep data-partial-step1 novalidate>
       <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
-
-      <div class="form-step is-active" data-step="1">
-        <div class="form-grid">
-          <div class="field"><label for="wc-first">First Name</label><input type="text" id="wc-first" name="first_name" required autocomplete="given-name"></div>
-          <div class="field"><label for="wc-last">Last Name</label><input type="text" id="wc-last" name="last_name" required autocomplete="family-name"></div>
-          <div class="field"><label for="wc-email">Email</label><input type="email" id="wc-email" name="email" required autocomplete="email"></div>
-          <div class="field"><label for="wc-phone">Phone</label><input type="tel" id="wc-phone" name="phone" required autocomplete="tel"></div>
-          <div class="field field-full"><label for="wc-business">Business Name</label><input type="text" id="wc-business" name="business_name" required></div>
-          <div class="field field-full"><label for="wc-amount">Finance Amount ($15,000 minimum)</label><input type="text" id="wc-amount" name="finance_amount" required></div>
-        </div>
-        <div class="form-actions">
-          <button type="button" class="btn btn-primary btn-block" data-step-next>Continue</button>
-        </div>
-      </div>
-
-      <div class="form-step" data-step="2">
-        <div class="form-grid">
-          <div class="field"><label for="wc-timeinbiz">Time in Business</label>
-            <select id="wc-timeinbiz" name="time_in_business" required>
-              <option value="">Select&hellip;</option>
-              <option>Less than 1 year</option>
-              <option>1&ndash;2 years</option>
-              <option>3&ndash;5 years</option>
-              <option>6&ndash;10 years</option>
-              <option>10+ years</option>
-            </select>
+        <div class="form-step is-active" data-step="1">
+          <div class="gf-grid gf-grid-2">
+          <div class="gf-field gf-half"><label class="visually-hidden" for="wc-first">First Name (required)</label><input type="text" id="wc-first" name="first_name" placeholder="First Name" required autocomplete="given-name"></div>
+          <div class="gf-field gf-half"><label class="visually-hidden" for="wc-last">Last Name (required)</label><input type="text" id="wc-last" name="last_name" placeholder="Last Name" required autocomplete="family-name"></div>
+          <div class="gf-field gf-half"><label class="visually-hidden" for="wc-email">Email (required)</label><input type="email" id="wc-email" name="email" placeholder="Email" required autocomplete="email"></div>
+          <div class="gf-field gf-half"><label class="visually-hidden" for="wc-phone">Phone (required)</label><input type="tel" id="wc-phone" name="phone" placeholder="Phone" required autocomplete="tel"></div>
+          <div class="gf-field gf-full"><label class="visually-hidden" for="wc-business">Business Name (required)</label><input type="text" id="wc-business" name="business_name" placeholder="Business Name" required autocomplete="organization"></div>
+          <div class="gf-field gf-full"><label class="visually-hidden" for="wc-amount">Finance Amount ($15,000 minimum) (required)</label><input type="number" id="wc-amount" name="finance_amount" placeholder="Finance Amount ($15,000 minimum)" min="15000" step="1" inputmode="numeric" required></div>
+          <div class="gf-field gf-full"><label class="visually-hidden" for="wc-timing">How soon do you need financing? (required)</label><select id="wc-timing" name="funding_timeline" required><option value="">How soon do you need financing?</option><option>Need funding ASAP</option><option>Within 30 days</option><option>Within 90 days</option><option>Just gathering info</option></select></div>
           </div>
-          <div class="field"><label for="wc-credit">Estimated Personal Credit</label>
-            <select id="wc-credit" name="estimated_credit" required>
-              <option value="">Select&hellip;</option>
-              <option>Excellent (720+)</option>
-              <option>Good (680&ndash;719)</option>
-              <option>Fair (625&ndash;679)</option>
-              <option>Below 625</option>
-            </select>
-          </div>
-          <div class="field"><label for="wc-state">State</label><input type="text" id="wc-state" name="state" required></div>
-          <div class="field"><label for="wc-revenue">Average Monthly Revenue</label><input type="text" id="wc-revenue" name="monthly_revenue" required></div>
-          <div class="field field-full field-check">
-            <input type="checkbox" id="wc-consent" name="sms_consent" value="yes">
-            <label for="wc-consent" style="margin:0;font-weight:400;">I agree to be contacted by phone, email, or text about my application.</label>
-          </div>
+          <div class="gf-footer gf-footer-left"><button type="button" class="gf-button" data-step-next>Next</button></div>
         </div>
-        <div class="form-actions">
-          <button type="submit" class="btn btn-primary btn-block">Get My Free Quote</button>
-          <button type="button" class="btn btn-outline btn-block" data-step-prev>Back</button>
+        <div class="form-step" data-step="2">
+          <div class="gf-grid gf-grid-2">
+          <div class="gf-field gf-half gf-labelled"><label for="wc-years">How many years have you been in business?</label><select id="wc-years" name="years_in_business" required><option value="">Choose from below...</option><option>Startup/Less than a year</option><option>1-2 Years</option><option>3-5 Years</option><option>5+ Years</option></select></div>
+          <div class="gf-field gf-half gf-labelled"><label for="wc-wcloan">Does your business currently have a working capital loan?</label><select id="wc-wcloan" name="current_working_capital_loan" required><option value="">Choose from below...</option><option>Yes</option><option>No</option></select></div>
+          <div class="gf-field gf-half gf-labelled"><label for="wc-income">Business income reported last year?</label><select id="wc-income" name="business_income_last_year" required><option value="">Choose from below...</option><option>No income filed</option><option>Under $100K</option><option>$100k - $250K</option><option>$250K - $1MM</option><option>$1MM+</option><option>$5MM+</option></select></div>
+          <div class="gf-field gf-half gf-labelled"><label for="wc-revenue">What is your average monthly revenue during the past 3 months?</label><select id="wc-revenue" name="avg_monthly_revenue_3mo" required><option value="">Choose from below...</option><option>$0k - $25K</option><option>$25K - $50K</option><option>$50k - $100K</option><option>$100k+</option></select></div>
+          <div class="gf-field gf-half gf-labelled"><label for="wc-deposits">What is the average number of monthly deposits during the past 3 months?</label><select id="wc-deposits" name="avg_monthly_deposits_3mo" required><option value="">Choose from below...</option><option>0 – 5 Deposits</option><option>5 – 10 Deposits</option><option>10+ Deposits</option></select></div>
+          <div class="gf-field gf-half gf-labelled"><label for="wc-credit">What range is your personal credit score?</label><select id="wc-credit" name="credit_score_range" required><option value="">Choose from below...</option><option>700+</option><option>650+</option><option>600+</option><option>Below 600</option></select></div>
+          <div class="gf-field gf-half gf-labelled"><label for="wc-cards">Do you have an open credit card(s) on your personal credit?</label><select id="wc-cards" name="open_credit_cards" required><option value="">Choose from below...</option><option>Yes</option><option>No</option></select></div>
+          <div class="gf-field gf-half gf-labelled"><label for="wc-bk">Any bankruptcies within the last 10 years?</label><select id="wc-bk" name="bankruptcy_10yr" required><option value="">Choose from below...</option><option>Yes</option><option>No</option></select></div>
+          <div class="gf-field gf-half gf-labelled"><label for="wc-liens">Are there any open tax liens or judgements?</label><select id="wc-liens" name="tax_liens_judgements" required><option value="">Choose from below...</option><option>No</option><option>Yes</option></select></div>
+          <div class="gf-field gf-half gf-labelled"><label for="wc-childsupport">Any child support collections reported on credit?</label><select id="wc-childsupport" name="child_support_collections" required><option value="">Choose from below...</option><option>No</option><option>Yes</option></select></div>
+          </div>
+          <div class="gf-footer gf-footer-left"><button type="button" class="gf-button gf-button-secondary" data-step-prev>Previous</button> <button type="submit" class="gf-button">Apply Now</button></div>
         </div>
-      </div>
       <div class="form-status" role="status"></div>
     </form>
   </div>
