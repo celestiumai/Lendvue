@@ -127,6 +127,25 @@
       var honeypot = form.querySelector('input[name="website"]');
       if (honeypot && honeypot.value) return;
 
+      // Validate required fields / min values (forms use novalidate for custom styling)
+      var invalid = [];
+      form.querySelectorAll("input, select, textarea").forEach(function (f) {
+        if (f.classList.contains("honeypot") || f.type === "hidden") return;
+        var bad = !f.checkValidity();
+        f.classList.toggle("is-invalid", bad);
+        f.setAttribute("aria-invalid", bad ? "true" : "false");
+        if (bad) invalid.push(f);
+      });
+      if (invalid.length) {
+        var first = invalid[0];
+        var msg = first.validity.rangeUnderflow
+          ? "Please enter a value of at least " + Number(first.min).toLocaleString() + "."
+          : "Please fill out all required fields.";
+        setStatus(form, "error", msg);
+        first.focus();
+        return;
+      }
+
       var submitBtns = form.querySelectorAll('button[type="submit"]');
       submitBtns.forEach(function (b) { b.disabled = true; b.dataset.originalText = b.textContent; b.textContent = "Sending..."; });
 

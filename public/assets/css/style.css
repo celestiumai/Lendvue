@@ -487,3 +487,43 @@ figure.testimonial-card, .testimonial-card blockquote { margin: 0; }
 }
 .tile-grid.tile-grid-tight { margin-bottom: 20px; }
 .testimonial-card .testimonial-name { min-height: 20px; }  /* live el-meta box renders 20px tall */
+
+/* ---------- Centered tall hero (Vendor Partners: 210px padding, centered) ---------- */
+.hero.hero-tall { padding: 210px 0; }
+@media (max-width: 959px) { .hero.hero-tall { padding: 100px 0; } }
+.hero.hero-center { text-align: center; }
+.hero.hero-center .hero-actions { justify-content: center; }
+
+/* ---------- Vendor application band (live: blue gradient with a white 185px strip
+   at the bottom so the form card overlaps onto white) ---------- */
+.vendor-apply { position: relative; padding: 40px 0; background: linear-gradient(to right, #366797 0%, #0388F7 100%); }
+.vendor-apply::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 185px; background: #fff; z-index: 1; }
+.vendor-apply .container { position: relative; z-index: 2; }
+.vendor-apply-head { display: grid; grid-template-columns: 2fr 1fr; align-items: start; margin: 0 0 40px -40px; }
+.vendor-apply-head > * { padding-left: 40px; }  /* UIkit grid gutter math: 2/3 column = 786.67px */
+.vendor-apply-head h2 { color: #fff; margin: 0 0 20px; }
+.vendor-apply-head p { color: #fff; margin: 0; }
+.vendor-apply-head img { justify-self: center; margin-top: 13px; box-sizing: content-box; }
+@media (max-width: 959px) { .vendor-apply-head { grid-template-columns: 1fr; gap: 16px; margin-left: 0; } .vendor-apply-head > * { padding-left: 0; } .vendor-apply-head img { justify-self: start; margin: 0; } }
+
+/* ---------- Gravity-Forms-style card form (measured on live) ---------- */
+.form-card { background: #fff; border-radius: 20px; padding: 40px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
+@media (max-width: 640px) { .form-card { padding: 24px 20px; } }
+.form-card h3 { color: var(--color-navy-light); font-size: 24px; line-height: 33.6px; padding-bottom: 7.4px; border-bottom: 1px solid #E5E5E5; margin: 0 0 40px; }
+.gf-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 22px 24px; }
+.gf-field { grid-column: span 2; }
+.gf-field.gf-half { grid-column: span 3; }
+@media (max-width: 760px) { .gf-grid { grid-template-columns: 1fr; gap: 16px; } .gf-field, .gf-field.gf-half { grid-column: auto; } }
+.gf-field input, .gf-field select, .gf-field textarea {
+  width: 100%; height: 39px; padding: 8px; border: 0; border-radius: 5px; background: #F5F5F5;
+  font-family: inherit; font-size: 15px; color: #000; -moz-appearance: textfield;
+}
+.gf-field textarea { height: auto; min-height: 120px; }
+.gf-field input::placeholder, .gf-field textarea::placeholder { color: #757575; opacity: 1; }
+.gf-field input::-webkit-outer-spin-button, .gf-field input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.gf-field input:focus, .gf-field select:focus, .gf-field textarea:focus { outline: 2px solid var(--color-accent-blue); outline-offset: 0; }
+.gf-field input.is-invalid { outline: 2px solid #C02B0A; }
+.gf-footer { text-align: center; margin-top: 28px; padding-bottom: 16px; }
+.gf-button { background: var(--color-primary); color: #fff; border: 0; border-radius: 5px; padding: 8px 30px; font-size: 13.3333px; line-height: 20px;
+  font-weight: 600; text-transform: uppercase; font-family: inherit; transition: background-color 0.1s ease-in-out; }
+.gf-button:hover { background: #E53213; }
