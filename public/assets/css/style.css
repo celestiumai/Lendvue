@@ -260,6 +260,7 @@ section { padding: 40px 0; }
 .feature-top p { color: #000; margin-bottom: 0; font-size: 16px; line-height: 24px; }
 .section-head + .grid, .section-head + .tile-grid { margin-top: 0; }
 .section-head.head-gap-70 { margin-bottom: 70px; }
+.section-head.head-gap-40 { margin-bottom: 40px; }
 
 /* ---------- Steps ---------- */
 .step { position: relative; margin-top: 40px; }
@@ -326,7 +327,7 @@ section { padding: 40px 0; }
 .cta-band .btn-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
 
 /* ---------- Contact / CTA strip (full-width blue bar) ---------- */
-.contact-strip { background: linear-gradient(90deg, var(--color-navy-light) 0%, var(--color-accent-blue) 100%); padding: 40px 0; text-align: left; }
+.contact-strip { background: linear-gradient(90deg, #366797 0%, #0388F7 74%); padding: 40px 0; text-align: left; }
 .contact-strip .container {
   display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px;
 }
@@ -469,7 +470,7 @@ figure.testimonial-card, .testimonial-card blockquote { margin: 0; }
 .band-blue h2 { color: #fff; margin: 0; }
 
 /* ---------- Eligibility (live: 280px red circle + 450px list, 750px centered grid) ---------- */
-.eligibility-wrap { display: grid; grid-template-columns: 300px 450px; justify-content: center; }
+.eligibility-wrap { display: grid; grid-template-columns: 300px 450px; justify-content: center; align-items: center; }
 .eligibility-circle { width: 280px; height: 280px; border-radius: 50%; background: var(--color-primary);
   display: flex; flex-direction: column; align-items: center; justify-content: center; }
 .eligibility-circle p { color: #fff; font-size: 48px; line-height: 62.4px; font-weight: 600; margin: 0; text-align: center; }
@@ -485,3 +486,4 @@ figure.testimonial-card, .testimonial-card blockquote { margin: 0; }
   .eligibility-list { max-width: 450px; width: 100%; }
 }
 .tile-grid.tile-grid-tight { margin-bottom: 20px; }
+.testimonial-card .testimonial-name { min-height: 20px; }  /* live el-meta box renders 20px tall */
