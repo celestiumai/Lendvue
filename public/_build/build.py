@@ -5,6 +5,7 @@ into finished pages under the project root (Cloudflare Pages pretty-URL
 layout: <slug>/index.html)."""
 import hashlib
 import os
+import re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BUILD = os.path.join(ROOT, "_build")
@@ -268,12 +269,25 @@ def render_foot(cfg):
     return html
 
 
+INCLUDE_RE = re.compile(r"<!--#include ([\w-]+)-->")
+
+
+def expand_includes(html):
+    """Replace <!--#include name--> with _build/partials/name.html so shared
+    blocks (testimonials, etc.) live in one file instead of being pasted per page."""
+    def sub(m):
+        with open(os.path.join(BUILD, "partials", m.group(1) + ".html"), encoding="utf-8") as f:
+            return f.read().rstrip("\n")
+    return INCLUDE_RE.sub(sub, html)
+
+
 def main():
     for cfg in PAGES:
         body_slug = cfg.get("body_source", cfg["slug"] or "home")
         body_path = os.path.join(BUILD, "pages", f"{body_slug}.html")
         with open(body_path, encoding="utf-8") as f:
             body = f.read()
+        body = expand_includes(body)
         full = render_head(cfg) + body + render_foot(cfg)
         out_path = os.path.join(ROOT, cfg["out"])
         os.makedirs(os.path.dirname(out_path), exist_ok=True)
