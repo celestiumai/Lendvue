@@ -112,7 +112,7 @@ after deploy.
 
 ## Outstanding items
 
-- Voiceflow chatbot `projectID` in `_build/foot.html` is still a placeholder
+- (done) Voiceflow chatbot `projectID` set to 64d40070fec0d1000682be7e — was a placeholder
   (`YOUR_VOICEFLOW_PROJECT_ID`) — needs the real project ID from the site owner, then
   rebuild.
 - Current Inventory: live embeds www.currentinventory.net, which has lapsed (GoDaddy
