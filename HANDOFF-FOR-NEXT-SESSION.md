@@ -16,17 +16,18 @@ This zip is a snapshot of that work so far, handed off from a previous session.
    supposed to follow.
 4. Then read this doc's "Current status" and "How to continue" sections below.
 
-## Current status
+## Current status (updated Oct 22, 2026)
 
-The **homepage** just went through a full pixel-fidelity pass and should now closely
-match the real lendvue.com. All other pages (`/equipment-financing/`, `/business-loans/`,
-`/vendor-partners/`, `/about/`, `/contact/`, `/apply-now/`, `/current-inventory/`) had an
-earlier, less rigorous fidelity pass and **still need the same treatment** — the
-project owner's explicit instruction was "hash out everything wrong with the home page,
-and then we'll go on to the other pages because they're all messed up too."
+**Every page has had the computed-style fidelity pass** against the live site at a 1905px
+viewport: home, equipment-financing, business-loans, vendor-partners, about, contact,
+apply-now (+ both quote modals), current-inventory, privacy-policy, terms-of-use, the
+landing funnel (/get-equipment-financing/, /get-equipment-financing-2/) and all three
+thank-you pages. Section-by-section heights and key element positions match live to
+within 1px. See `claude/site-rebuild-status.md` for what changed and the deliberate
+deviations from live.
 
-Not yet audited at all: Privacy Policy, Terms of Use, the three thank-you pages (lower
-priority — mostly plain legal/confirmation text).
+The repo is **github.com/celestiumai/Lendvue** (site lives in `public/`; these docs live
+at the repo root so they are never deployed). Work is committed and pushed to `main`.
 
 ## The methodology that actually worked (use this, not screenshots)
 
@@ -86,6 +87,12 @@ This is a templated static site, not hand-written HTML per page:
 _build/head.html + _build/pages/<slug>.html + _build/foot.html  →  <slug>/index.html
 ```
 
+Shared blocks live in `_build/partials/` and are pulled in with `<!--#include name-->`
+(partials may include partials): testimonials, industry-tiles, landing-header,
+landing-body, and every SVG icon (`icon-*.html`, copied path-for-path from live).
+Legal pages are generated from plain text: edit `_build/legal/privacy.txt` /
+`terms.txt`, run `python3 _build/legal/gen.py`, then `python3 _build/build.py`.
+
 After ANY change to a page, template, or `assets/css/style.css` / `assets/js/main.js`,
 re-run from the project root:
 
@@ -108,5 +115,6 @@ after deploy.
 - Voiceflow chatbot `projectID` in `_build/foot.html` is still a placeholder
   (`YOUR_VOICEFLOW_PROJECT_ID`) — needs the real project ID from the site owner, then
   rebuild.
-- Remaining pages need the same computed-style fidelity pass as the homepage (see above).
-- Privacy Policy / Terms of Use / thank-you pages haven't been visually audited at all.
+- Current Inventory: live embeds www.currentinventory.net, which has lapsed (GoDaddy
+  parking page). The embed was dropped; ask the owner if there is a replacement feed.
+- Forms need RESEND_API_KEY / TO_EMAIL / FROM_EMAIL set in Cloudflare Pages (see README).

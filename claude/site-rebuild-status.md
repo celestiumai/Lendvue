@@ -1,5 +1,49 @@
 # Lendvue Site Rebuild — Status
 
+## Latest pass (Oct 22, 2026): whole-site fidelity pass, every page
+
+Method: live DOM measured in Chrome (getComputedStyle / getBoundingClientRect at 1905px),
+local build measured the same way with Playwright (`/home/claude/qa/measure.py` in that
+session), then matched. Section heights now equal live on every page.
+
+**Site-wide corrections (affected the homepage too):** UIkit container (1200 content,
+15/30/40px gutters), body 16/24 #000, p margin 20, h2 line-height 1.3, sections 70px,
+`--color-bg-alt` #FAFAFA, buttons 55px tall (14px/600, 0 40px), header 60px and NOT
+sticky (live isn't), nav hover #666 / active #333 (no red underline), footer 3 equal
+columns + 3-column bottom bar (13px #999, links #1E87F0), contact strip gradient
+#366797→#0388F7 @74%, UIkit fraction math for 1/3–2/3 and 3/5 grids.
+
+**Homepage fixes the previous pass got wrong:** hero 140px padding with no overlay
+(live has none); service cards are hover tiles (no scrim at rest — scrim, zoom and
+description only on hover); trust badges are the 2023/07 PNGs in a 5-column grid; steps
+box is full-width text over a right-aligned background photo, sticking out 40px left;
+testimonials section is white (not alt) and DOES show the word "Excellent"; feature
+icons are the live inline SVGs (50px), not 24px webp files.
+
+**Per page:** EF (hero photo 646add_1dbc…, 9 hover tiles with live photos + text),
+BL (womanchefsmiling hero, 40px eligibility gap), VP (centered 210px hero, form band with
+white 185px overlap strip, Gravity-style card form), About (gradient title band),
+Contact (600/600 split card + map), Apply Now (program panels + both modals rebuilt
+field-for-field from the live Gravity Forms), Current Inventory, legal pages (word-for-
+word incl. the SMS Policy section ours was missing), landing funnel + thank-you pages
+(previously plain EF copies).
+
+**Deliberate deviations from live (tell the owner if asked):**
+- Fixed obvious typos in copy ("Sounds Booths", "Telhandlers", "Concrete Pump, Trucks",
+  "Doucsign", About's address labelled "By Phone" → "By Address").
+- Current Inventory drops the dead currentinventory.net iframe.
+- Contact map is a Google Maps embed (live: Leaflet/OSM) for the local-SEO signal.
+- Thank-you pages: live repeats the testimonials block twice; included once. Thank-you
+  pages stay noindex (live indexes them).
+- Phone number in the contact strip is a tel: link styled as plain text.
+
+**Form behaviour:** all forms validate before sending (were sending empty with
+`novalidate`). Quote modals and the landing page email step-1 contact details
+immediately (partial-entry equivalent). Landing step 2 includes step-1 details. gclid /
+utm_* captured on arrival and attached to every submission as `attr_*` fields.
+`/apply-now/#equipmentfinancing` and `#workingcapital` open the modals directly.
+
+
 ## Latest pass: pixel-exact homepage fidelity (computed-style methodology)
 
 After the caching fix (below), the user did a fresh, properly-loaded comparison against

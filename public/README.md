@@ -120,6 +120,10 @@ place:
   placeholders)
 - `_build/pages/<name>.html` — that page's unique body content
 - `_build/foot.html` — shared footer + scripts
+- `_build/partials/<name>.html` — shared blocks (testimonials, industry tiles, landing-page
+  header/body, SVG icons) inserted with `<!--#include name-->`
+- `_build/legal/*.txt` — Privacy Policy / Terms text; run `python3 _build/legal/gen.py`
+  after editing them
 
 After editing any of those, regenerate the actual site files with:
 
@@ -127,11 +131,10 @@ After editing any of those, regenerate the actual site files with:
 python3 _build/build.py
 ```
 
-This overwrites `index.html`, `about/index.html`, etc. from the templates — it's safe to
-run any time. Since everything is plain HTML/CSS/JS with no build tooling required, you
-can also just hand a page directly to Claude and say "update the h2 on the about page" —
-it can edit the file in place without touching the templating system at all if that's
-easier for a one-off change.
+This overwrites `index.html`, `about/index.html`, etc. from the templates (and refreshes
+the cache-busting `?v=` hash on the CSS/JS) — it's safe to run any time. **Don't hand-edit
+the generated `index.html` files**: the next build overwrites them. Always edit `_build/`
+and rebuild.
 
 ## 7. Security
 

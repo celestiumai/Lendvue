@@ -47,7 +47,7 @@ PAGES = [
         "slug": "equipment-financing",
         "out": "equipment-financing/index.html",
         "title": "Equipment Financing | Terms from 24-72 Months | Lendvue",
-        "meta_desc": "Get equipment financing with little to no money down. 24-72 month terms, soft credit pull, and next-day funding for construction, medical, and commercial equipment.",
+        "meta_desc": "Equipment financing with little to no money down: 24-72 month terms, soft credit pull, and fast funding for construction, medical & commercial equipment.",
         "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
         "canonical": "https://www.lendvue.com/equipment-financing/",
         "og_title": "Equipment Financing Made Easy | Lendvue",
