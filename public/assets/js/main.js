@@ -154,6 +154,22 @@
     show(0);
   });
 
+  /* ---------------- Lead attribution ----------------
+     Remember ad-click parameters (gclid, utm_*) from the landing URL for this visit
+     and include them with every form submission so leads can be tied to campaigns. */
+  function store(key, val) { try { sessionStorage.setItem(key, JSON.stringify(val)); } catch (e) {} }
+  function recall(key) { try { return JSON.parse(sessionStorage.getItem(key) || "null"); } catch (e) { return null; } }
+  (function captureAttribution() {
+    var keys = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid", "gbraid", "wbraid", "fbclid", "msclkid"];
+    var params = new URLSearchParams(window.location.search), found = {}, any = false;
+    keys.forEach(function (k) { if (params.get(k)) { found[k] = params.get(k).slice(0, 200); any = true; } });
+    if (any && !recall("lv_attr")) {
+      found.landing_page = window.location.pathname;
+      found.referrer = document.referrer.slice(0, 200);
+      store("lv_attr", found);
+    }
+  })();
+
   /* ---------------- AJAX form submission ---------------- */
   function setStatus(form, type, message) {
     var status = form.querySelector(".form-status");
@@ -196,7 +212,14 @@
       var payload = {};
       formData.forEach(function (value, key) { payload[key] = value; });
       payload.formName = form.getAttribute("data-ajax-form") || "General Inquiry";
-      payload.pageUrl = window.location.href;
+      payload.pageUrl = window.location.href.split("?")[0];
+      // Landing-page funnel: step 2 (credit questions) carries the step-1 contact details
+      if (form.hasAttribute("data-attach-lead")) {
+        var lead = recall("lv_lead") || {};
+        Object.keys(lead).forEach(function (k) { if (!(k in payload)) payload[k] = lead[k]; });
+      }
+      var attr = recall("lv_attr");
+      if (attr) Object.keys(attr).forEach(function (k) { payload["attr_" + k] = attr[k]; });
 
       fetch("/api/submit-form", {
         method: "POST",
@@ -208,6 +231,11 @@
           return res.json();
         })
         .then(function () {
+          if (form.hasAttribute("data-store-lead")) {
+            var keep = {};
+            ["first_name", "last_name", "email", "phone", "business_name", "finance_amount", "funding_timeline"].forEach(function (k) { if (payload[k]) keep[k] = payload[k]; });
+            store("lv_lead", keep);
+          }
           var redirect = form.getAttribute("data-redirect");
           if (redirect) {
             window.location.href = redirect;

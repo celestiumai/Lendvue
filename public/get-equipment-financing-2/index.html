@@ -32,7 +32,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <!-- Styles -->
-<link rel="stylesheet" href="/assets/css/style.css?v=deb950eb">
+<link rel="stylesheet" href="/assets/css/style.css?v=54c8582d">
 
 <!-- Structured data: Organization (site-wide) -->
 <script type="application/ld+json">
@@ -84,21 +84,20 @@
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
 
-<header class="site-header">
+<header class="site-header landing-header">
   <div class="container">
     <a class="logo" href="/" aria-label="Lendvue home">
       <img src="/assets/images/lendvue-logo.webp" alt="Lendvue" width="159" height="35">
     </a>
     <div class="nav-scrim"></div>
-    <nav class="main-nav" aria-label="Primary">
+    <nav class="main-nav" aria-label="On this page">
       <ul>
-        <li><a href="/equipment-financing/" aria-current="page">Equipment Financing</a></li>
-        <li><a href="/business-loans/">Business Loans</a></li>
-        <li><a href="/vendor-partners/">Vendor Partners</a></li>
-        <li><a href="/about/">About Us</a></li>
+        <li><a href="#equipmentfinancing">Equipment Financing</a></li>
+        <li><a href="#doyouqualify">Do You Qualify</a></li>
+        <li><a href="#aboutus">About Us</a></li>
       </ul>
       <div class="header-cta">
-        <a class="btn btn-primary" href="/apply-now/">Apply Now</a>
+        <a class="btn btn-primary" href="#getfinancing">Apply Now</a>
       </div>
     </nav>
     <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
@@ -108,23 +107,47 @@
 </header>
 
 <main id="main">
-<section class="hero has-image" style="background-image:url('/assets/images/hero-equipment-financing-v2.webp');">
-  <div class="container">
-    <div class="hero-inner hero-inner-wide">
-      <h1>Equipment Financing with Same Day Funding</h1>
-      <p class="lede">4 out of 5 Qualified Applicants Get Approved!</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="/apply-now/">Apply Now</a>
-      </div>
+<section class="hero has-image landing-hero" style="background-image:url('/assets/images/hero-landing-approved.webp');">
+  <div class="container container-expand" id="getfinancing">
+    <div class="landing-card landing-card-wide">
+      <h1>Please complete the credit questions</h1>
+      <p class="landing-sub">Quick Approvals, No Hard Inquiries</p>
+      <form data-ajax-form="Get Equipment Financing (landing page step 2 - credit questions)" data-redirect="/thank-you/" data-attach-lead novalidate>
+        <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="gf-grid gf-grid-2">
+          <div class="gf-field gf-half gf-labelled"><label for="lp-years">How many years have you been in business?</label><select id="lp-years" name="years_in_business" required><option value="">Choose from below...</option><option>Startup/Less than a year</option><option>1-2 Years</option><option>3-5 Years</option><option>5+ Years</option></select></div>
+          <div class="gf-field gf-half gf-labelled"><label for="lp-prior">Have you secured equipment financing under the business name in the past?</label><select id="lp-prior" name="prior_equipment_financing" required><option value="">Choose from below...</option><option>Yes</option><option>No</option></select></div>
+          <div class="gf-field gf-half gf-labelled"><label for="lp-income">Business income reported last year?</label><select id="lp-income" name="business_income_last_year" required><option value="">Choose from below...</option><option>No income filed</option><option>Under $100K</option><option>$100k - $250K</option><option>$250K - $1MM</option><option>$1MM+</option><option>$5MM+</option></select></div>
+          <div class="gf-field gf-half gf-labelled"><label for="lp-credit">What range is your personal credit score?</label><select id="lp-credit" name="credit_score_range" required><option value="">Choose from below...</option><option>750+</option><option>700+</option><option>650+</option><option>600+</option><option>Below 600</option></select></div>
+          <div class="gf-field gf-half gf-labelled"><label for="lp-mortgage">Do you have an open mortgage account on your personal credit?</label><select id="lp-mortgage" name="open_mortgage" required><option value="">Choose from below...</option><option>Yes</option><option>No</option></select></div>
+          <div class="gf-field gf-half gf-labelled"><label for="lp-auto">Do you have an auto loan on your personal credit?</label><select id="lp-auto" name="auto_loan" required><option value="">Choose from below...</option><option>Yes</option><option>No</option></select></div>
+          <div class="gf-field gf-half gf-labelled"><label for="lp-cards">Do you have an open credit card(s) on your personal credit?</label><select id="lp-cards" name="open_credit_cards" required><option value="">Choose from below...</option><option>Yes</option><option>No</option></select></div>
+          <div class="gf-field gf-half gf-labelled"><label for="lp-bk">Any bankruptcies within the last 10 years?</label><select id="lp-bk" name="bankruptcy_10yr" required><option value="">Choose from below...</option><option>Yes</option><option>No</option></select></div>
+          <div class="gf-field gf-half gf-labelled"><label for="lp-liens">Are there any open tax liens or judgements?</label><select id="lp-liens" name="tax_liens_judgements" required><option value="">Choose from below...</option><option>Yes</option><option>No</option></select></div>
+          <div class="gf-field gf-half gf-labelled"><label for="lp-childsupport">Any child support collections reported on credit?</label><select id="lp-childsupport" name="child_support_collections" required><option value="">Choose from below...</option><option>Yes</option><option>No</option></select></div>
+        </div>
+        <div class="gf-footer gf-footer-left"><button type="submit" class="gf-button">Apply Now</button></div>
+        <div class="form-status" role="status"></div>
+      </form>
     </div>
   </div>
 </section>
 
-<section class="section-alt" aria-labelledby="overview-heading">
+<section class="trust-bar" aria-label="Accreditations">
   <div class="container">
+    <img src="/assets/images/badge-ssl-v2.webp" alt="SSL encryption with extended validation" width="97" height="68" loading="lazy">
+    <img src="/assets/images/badge-dbo-v2.webp" alt="Licensed by the California Department of Business Oversight" width="166" height="68" loading="lazy">
+    <img src="/assets/images/badge-bbb-v2.webp" alt="BBB Accredited Business, A+ rating" width="152" height="68" loading="lazy">
+    <img src="/assets/images/badge-google-v2.webp" alt="Google Reviews" width="125" height="68" loading="lazy">
+    <img src="/assets/images/badge-docusign-v2.webp" alt="Secured with DocuSign" width="171" height="68" loading="lazy">
+  </div>
+</section>
+
+<section class="section-alt" aria-labelledby="overview-heading">
+  <div class="container" id="equipmentfinancing">
     <div class="section-head head-gap-70 text-center">
       <h2 id="overview-heading">Equipment Financing with Lendvue</h2>
-      <p class="lede lede-wide">We are a national online lender that provides funding for all of your business equipment needs. Everything from machinery, construction equipment, to commercial vehicles and more. The upfront costs are minimal and you will repay your equipment loan with monthly payment options ranging from 24 to 72 months.</p>
+      <p class="lede lede-wide">We are a national online equipment lender that provides funding for all of your business needs. Everything from machinery, construction equipment, to commercial vehicles and more. The upfront costs are minimal with monthly payment options ranging from 24 to 72 months.</p>
     </div>
     <div class="grid grid-3">
       <div class="feature-top">
@@ -147,8 +170,8 @@
 </section>
 
 <section aria-labelledby="eligibility-heading">
-  <div class="container">
-    <div class="section-head head-gap-70 text-center">
+  <div class="container" id="doyouqualify">
+    <div class="section-head head-gap-40 text-center">
       <h2 id="eligibility-heading">Eligibility Requirements for Financing</h2>
     </div>
     <div class="eligibility-wrap">
@@ -167,7 +190,7 @@
   </div>
 </section>
 
-<section aria-labelledby="steps-heading">
+<section class="steps-fade" aria-labelledby="steps-heading">
   <div class="container">
     <div class="steps-card">
       <h2 id="steps-heading">Get Financing in Three Simple Steps</h2>
@@ -175,6 +198,63 @@
       <div class="step step-narrow"><h3>Step 2. Get A Decision</h3><p>Get a credit decision within 24 hours. Approvals are good for 30 days giving you plenty of time to shop of your equipment.</p></div>
       <div class="step"><h3>Step 3. Funding The Equipment Seller</h3><p>Docusign from your smartphone or computer making funding a snap.</p></div>
       <a class="btn btn-primary" href="/apply-now/">Apply Now</a>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt" aria-labelledby="why-heading">
+  <div class="container" id="aboutus">
+    <div class="section-head head-gap-70 text-center">
+      <h2 id="why-heading">Reasons to Choose Lendvue</h2>
+    </div>
+    <div class="grid grid-3">
+      <div class="feature-top">
+        <div class="card-icon"><svg class="icon" viewBox="0 0 512 512" width="50" height="50" fill="currentColor" aria-hidden="true"><path d="M243.4 2.587c8-3.45 17.2-3.45 25.2 0l224 96.003c14 6.01 21.8 21.01 18.7 35.81-3 14.9-16.1 24.7-32.2 25.6v8c0 13.3-9.8 24-24 24h-400c-12.36 0-24-10.7-24-24v-8c-14.29-.9-27.392-10.7-30.447-25.6-3.055-14.8 4.776-29.8 18.737-35.81L243.4 2.587zM256 128c17.7 0 32-14.3 32-32 0-17.67-14.3-32-32-32s-32 14.33-32 32c0 17.7 14.3 32 32 32zM127.1 416h40V224h64v192H280V224h64v192h40V224h64v196.3c.6.3 1.2-.2 1.8 1.1l48 32c11.7 7.8 16.9 22.4 12.8 35.9-4.1 13.5-16.5 22.7-30.6 22.7H31.1c-13.2 0-25.642-9.2-29.728-22.7-4.087-13.5 1.143-28.1 12.878-35.9l48-32c.57-1.3 1.16-.8.85-1.1V224h64v192z"/></svg></div>
+        <h3>Licensed Lender</h3>
+        <p>Lendvue is a California licensed lender financing customers in all 50 states since 2002.</p>
+      </div>
+      <div class="feature-top">
+        <div class="card-icon"><svg class="icon" viewBox="0 0 640 512" width="50" height="50" fill="currentColor" aria-hidden="true"><path d="M96 464v32c0 8.84 7.16 16 16 16h224c8.84 0 16-7.16 16-16V153.25c4.56-2 8.92-4.35 12.99-7.12l142.05 47.63c8.38 2.81 17.45-1.71 20.26-10.08l10.17-30.34c2.81-8.38-1.71-17.45-10.08-20.26l-128.4-43.05c.42-3.32 1.01-6.6 1.01-10.03 0-44.18-35.82-80-80-80-29.69 0-55.3 16.36-69.11 40.37L132.96.83c-8.38-2.81-17.45 1.71-20.26 10.08l-10.17 30.34c-2.81 8.38 1.71 17.45 10.08 20.26l132 44.26c7.28 21.25 22.96 38.54 43.38 47.47V448H112c-8.84 0-16 7.16-16 16zM0 304c0 44.18 57.31 80 128 80s128-35.82 128-80h-.02c0-15.67 2.08-7.25-85.05-181.51-17.68-35.36-68.22-35.29-85.87 0C-1.32 295.27.02 287.82.02 304H0zm56-16l72-144 72 144H56zm328.02 144H384c0 44.18 57.31 80 128 80s128-35.82 128-80h-.02c0-15.67 2.08-7.25-85.05-181.51-17.68-35.36-68.22-35.29-85.87 0-86.38 172.78-85.04 165.33-85.04 181.51zM440 416l72-144 72 144H440z"/></svg></div>
+        <h3>A+ Rated Better Business Bureau</h3>
+        <p>When it comes to financing, It is absolutely crucial to know who you are dealing with. Rest assured with our A+ rating.</p>
+      </div>
+      <div class="feature-top">
+        <div class="card-icon"><svg class="icon" viewBox="0 0 24 24" width="50" height="50" fill="currentColor" aria-hidden="true"><path d="M18 8h2a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V9a1 1 0 011-1h2V7a6 6 0 1112 0v1zm-7 7.732V18h2v-2.268a2 2 0 10-2 0zM16 8V7a4 4 0 10-8 0v1h8z"/></svg></div>
+        <h3>Keeping Your Information Secure</h3>
+        <p>We use Docusign on our applications and finance documents keeping your info secure and saving you time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="testimonials-heading">
+  <div class="container">
+    <div class="testimonial-head">
+      <h2 id="testimonials-heading">Over 20 Years of Trusted Service</h2>
+    </div>
+    <div class="testimonial-grid">
+      <div class="rating-summary">
+        <p class="rating-word">Excellent</p>
+        <div class="stars-row"><img src="/assets/images/rating-4-5-stars.webp" alt="Rated 4.5 out of 5 stars" width="150" height="22" loading="lazy"></div>
+        <img class="google-logo" src="/assets/images/google-reviews-badge.webp" alt="Google Reviews" width="99" height="40" loading="lazy">
+      </div>
+      <div class="testimonial-cards">
+        <figure class="testimonial-card">
+          <div class="stars-row"><img src="/assets/images/stars-5.webp" alt="5 out of 5 stars" width="125" height="18" loading="lazy"></div>
+          <blockquote><p><strong>Lendvue, Warren, and Brian are </strong>phenomenal to work with. We spoke with literally dozens of lending . . .</p></blockquote>
+          <figcaption class="testimonial-name">Joseph Labdik</figcaption>
+        </figure>
+        <figure class="testimonial-card">
+          <div class="stars-row"><img src="/assets/images/stars-5.webp" alt="5 out of 5 stars" width="125" height="18" loading="lazy"></div>
+          <blockquote><p><strong>Very methodical, detail oriented, </strong>great tenacity. Both Brian and Warren are extremely . . .</p></blockquote>
+          <figcaption class="testimonial-name">Raj Mohindra</figcaption>
+        </figure>
+        <figure class="testimonial-card">
+          <div class="stars-row"><img src="/assets/images/stars-5.webp" alt="5 out of 5 stars" width="125" height="18" loading="lazy"></div>
+          <blockquote><p><strong>I am so happy with the service I </strong>received working with Lendvue. From the start of the loan process . . .</p></blockquote>
+          <figcaption class="testimonial-name">Debbie Owenby</figcaption>
+        </figure>
+      </div>
     </div>
   </div>
 </section>
@@ -255,38 +335,6 @@
   </div>
 </section>
 
-<section aria-labelledby="testimonials-heading">
-  <div class="container">
-    <div class="testimonial-head">
-      <h2 id="testimonials-heading">Over 20 Years of Trusted Service</h2>
-    </div>
-    <div class="testimonial-grid">
-      <div class="rating-summary">
-        <p class="rating-word">Excellent</p>
-        <div class="stars-row"><img src="/assets/images/rating-4-5-stars.webp" alt="Rated 4.5 out of 5 stars" width="150" height="22" loading="lazy"></div>
-        <img class="google-logo" src="/assets/images/google-reviews-badge.webp" alt="Google Reviews" width="99" height="40" loading="lazy">
-      </div>
-      <div class="testimonial-cards">
-        <figure class="testimonial-card">
-          <div class="stars-row"><img src="/assets/images/stars-5.webp" alt="5 out of 5 stars" width="125" height="18" loading="lazy"></div>
-          <blockquote><p><strong>Lendvue, Warren, and Brian are </strong>phenomenal to work with. We spoke with literally dozens of lending . . .</p></blockquote>
-          <figcaption class="testimonial-name">Joseph Labdik</figcaption>
-        </figure>
-        <figure class="testimonial-card">
-          <div class="stars-row"><img src="/assets/images/stars-5.webp" alt="5 out of 5 stars" width="125" height="18" loading="lazy"></div>
-          <blockquote><p><strong>Very methodical, detail oriented, </strong>great tenacity. Both Brian and Warren are extremely . . .</p></blockquote>
-          <figcaption class="testimonial-name">Raj Mohindra</figcaption>
-        </figure>
-        <figure class="testimonial-card">
-          <div class="stars-row"><img src="/assets/images/stars-5.webp" alt="5 out of 5 stars" width="125" height="18" loading="lazy"></div>
-          <blockquote><p><strong>I am so happy with the service I </strong>received working with Lendvue. From the start of the loan process . . .</p></blockquote>
-          <figcaption class="testimonial-name">Debbie Owenby</figcaption>
-        </figure>
-      </div>
-    </div>
-  </div>
-</section>
-
 </main>
 
 <section class="contact-strip">
@@ -350,7 +398,7 @@
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
 </a>
 
-<script src="/assets/js/main.js?v=47f0d874" defer></script>
+<script src="/assets/js/main.js?v=49697e84" defer></script>
 
 <!-- Voiceflow chat widget -->
 <script type="text/javascript">

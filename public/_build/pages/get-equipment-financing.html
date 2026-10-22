@@ -1,0 +1,25 @@
+<section class="hero has-image landing-hero" style="background-image:url('/assets/images/hero-landing-approved.webp');">
+  <div class="container" id="getfinancing">
+    <div class="landing-card">
+      <h1>Equipment Financing Made Easy</h1>
+      <p class="landing-sub">Quick Approvals, No Hard Inquiries</p>
+      <form data-ajax-form="Get Equipment Financing (landing page step 1)" data-redirect="/get-equipment-financing-2/" data-store-lead novalidate>
+        <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="gf-grid gf-grid-2">
+          <div class="gf-field gf-half"><label class="visually-hidden" for="lp-first">First Name (required)</label><input type="text" id="lp-first" name="first_name" placeholder="First Name" required autocomplete="given-name"></div>
+          <div class="gf-field gf-half"><label class="visually-hidden" for="lp-last">Last Name (required)</label><input type="text" id="lp-last" name="last_name" placeholder="Last Name" required autocomplete="family-name"></div>
+          <div class="gf-field gf-half"><label class="visually-hidden" for="lp-email">Email (required)</label><input type="email" id="lp-email" name="email" placeholder="Email" required autocomplete="email"></div>
+          <div class="gf-field gf-half"><label class="visually-hidden" for="lp-phone">Phone (required)</label><input type="tel" id="lp-phone" name="phone" placeholder="Phone" required autocomplete="tel"></div>
+          <div class="gf-field gf-full"><label class="visually-hidden" for="lp-business">Business Name (required)</label><input type="text" id="lp-business" name="business_name" placeholder="Business Name" required autocomplete="organization"></div>
+          <div class="gf-field gf-full"><label class="visually-hidden" for="lp-amount">Finance Amount ($15,000 minimum) (required)</label><input type="number" id="lp-amount" name="finance_amount" placeholder="Finance Amount ($15,000 minimum)" min="15000" step="1" inputmode="numeric" required></div>
+          <div class="gf-field gf-full"><label class="visually-hidden" for="lp-timing">How soon do you need financing? (required)</label><select id="lp-timing" name="funding_timeline" required><option value="">How soon do you need financing?</option><option>Need funding ASAP</option><option>Within 30 days</option><option>Within 90 days</option><option>Just gathering info</option></select></div>
+          <div class="gf-field gf-full gf-checks"><label><input type="checkbox" name="sms_consent" value="yes"> I am happy to be contacted by SMS about my inquiry</label></div>
+        </div>
+        <div class="gf-footer gf-footer-left"><button type="submit" class="gf-button">Get My Free Quote</button></div>
+        <div class="form-status" role="status"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!--#include landing-body-->

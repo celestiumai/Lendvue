@@ -130,8 +130,8 @@ PAGES = [
         "canonical": "https://www.lendvue.com/equipment-financing/",
         "og_title": "Equipment Financing Made Easy | Lendvue",
         "nav_active": "equipment",
+        "landing_header": True,
         "cta_band": True,
-        "body_source": "equipment-financing",
     },
     {
         "slug": "get-equipment-financing-2",
@@ -142,8 +142,8 @@ PAGES = [
         "canonical": "https://www.lendvue.com/equipment-financing/",
         "og_title": "Equipment Financing Made Easy | Lendvue",
         "nav_active": "equipment",
+        "landing_header": True,
         "cta_band": True,
-        "body_source": "equipment-financing",
     },
     {
         "slug": "privacy-policy",
@@ -154,7 +154,7 @@ PAGES = [
         "canonical": "https://www.lendvue.com/privacy-policy/",
         "og_title": "Privacy Policy | Lendvue",
         "nav_active": None,
-        "cta_band": True,
+        "cta_band": False,
     },
     {
         "slug": "terms-of-use",
@@ -165,7 +165,7 @@ PAGES = [
         "canonical": "https://www.lendvue.com/terms-of-use/",
         "og_title": "Terms of Use | Lendvue",
         "nav_active": None,
-        "cta_band": True,
+        "cta_band": False,
     },
     {
         "slug": "thank-you",
@@ -176,8 +176,9 @@ PAGES = [
         "canonical": "https://www.lendvue.com/thank-you/",
         "og_title": "Thank You | Lendvue",
         "nav_active": None,
-        "cta_band": False,
-        "body_source": "thank-you",
+        "landing_header": True,
+        "landing_cta": "/apply-now/",
+        "cta_band": True,
     },
     {
         "slug": "thank-you-for-your-info",
@@ -188,8 +189,7 @@ PAGES = [
         "canonical": "https://www.lendvue.com/thank-you-for-your-info/",
         "og_title": "Thank You | Lendvue",
         "nav_active": None,
-        "cta_band": False,
-        "body_source": "thank-you",
+        "cta_band": True,
     },
     {
         "slug": "thank-you-for-your-feedback",
@@ -200,8 +200,7 @@ PAGES = [
         "canonical": "https://www.lendvue.com/thank-you-for-your-feedback/",
         "og_title": "Thank You | Lendvue",
         "nav_active": None,
-        "cta_band": False,
-        "body_source": "thank-you",
+        "cta_band": True,
     },
     {
         "slug": "404",
@@ -238,6 +237,11 @@ def render_head(cfg):
         repl[placeholder] = ' aria-current="page"' if cfg.get("nav_active") == key else ""
     for k, v in repl.items():
         html = html.replace(k, v)
+    if cfg.get("landing_header"):
+        # PPC landing pages / funnel thank-you page use the live site's in-page anchor menu
+        with open(os.path.join(BUILD, "partials", "landing-header.html"), encoding="utf-8") as f:
+            landing = f.read().replace("$LANDING_CTA", cfg.get("landing_cta", "#getfinancing"))
+        html = re.sub(r'<header class="site-header">.*?</header>\n', landing, html, flags=re.S)
     return html
 
 
@@ -278,7 +282,11 @@ def expand_includes(html):
     def sub(m):
         with open(os.path.join(BUILD, "partials", m.group(1) + ".html"), encoding="utf-8") as f:
             return f.read().rstrip("\n")
-    return INCLUDE_RE.sub(sub, html)
+    for _ in range(5):  # partials may include other partials
+        if not INCLUDE_RE.search(html):
+            break
+        html = INCLUDE_RE.sub(sub, html)
+    return html
 
 
 def main():

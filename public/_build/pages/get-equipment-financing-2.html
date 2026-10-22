@@ -1,0 +1,27 @@
+<section class="hero has-image landing-hero" style="background-image:url('/assets/images/hero-landing-approved.webp');">
+  <div class="container container-expand" id="getfinancing">
+    <div class="landing-card landing-card-wide">
+      <h1>Please complete the credit questions</h1>
+      <p class="landing-sub">Quick Approvals, No Hard Inquiries</p>
+      <form data-ajax-form="Get Equipment Financing (landing page step 2 - credit questions)" data-redirect="/thank-you/" data-attach-lead novalidate>
+        <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="gf-grid gf-grid-2">
+          <div class="gf-field gf-half gf-labelled"><label for="lp-years">How many years have you been in business?</label><select id="lp-years" name="years_in_business" required><option value="">Choose from below...</option><option>Startup/Less than a year</option><option>1-2 Years</option><option>3-5 Years</option><option>5+ Years</option></select></div>
+          <div class="gf-field gf-half gf-labelled"><label for="lp-prior">Have you secured equipment financing under the business name in the past?</label><select id="lp-prior" name="prior_equipment_financing" required><option value="">Choose from below...</option><option>Yes</option><option>No</option></select></div>
+          <div class="gf-field gf-half gf-labelled"><label for="lp-income">Business income reported last year?</label><select id="lp-income" name="business_income_last_year" required><option value="">Choose from below...</option><option>No income filed</option><option>Under $100K</option><option>$100k - $250K</option><option>$250K - $1MM</option><option>$1MM+</option><option>$5MM+</option></select></div>
+          <div class="gf-field gf-half gf-labelled"><label for="lp-credit">What range is your personal credit score?</label><select id="lp-credit" name="credit_score_range" required><option value="">Choose from below...</option><option>750+</option><option>700+</option><option>650+</option><option>600+</option><option>Below 600</option></select></div>
+          <div class="gf-field gf-half gf-labelled"><label for="lp-mortgage">Do you have an open mortgage account on your personal credit?</label><select id="lp-mortgage" name="open_mortgage" required><option value="">Choose from below...</option><option>Yes</option><option>No</option></select></div>
+          <div class="gf-field gf-half gf-labelled"><label for="lp-auto">Do you have an auto loan on your personal credit?</label><select id="lp-auto" name="auto_loan" required><option value="">Choose from below...</option><option>Yes</option><option>No</option></select></div>
+          <div class="gf-field gf-half gf-labelled"><label for="lp-cards">Do you have an open credit card(s) on your personal credit?</label><select id="lp-cards" name="open_credit_cards" required><option value="">Choose from below...</option><option>Yes</option><option>No</option></select></div>
+          <div class="gf-field gf-half gf-labelled"><label for="lp-bk">Any bankruptcies within the last 10 years?</label><select id="lp-bk" name="bankruptcy_10yr" required><option value="">Choose from below...</option><option>Yes</option><option>No</option></select></div>
+          <div class="gf-field gf-half gf-labelled"><label for="lp-liens">Are there any open tax liens or judgements?</label><select id="lp-liens" name="tax_liens_judgements" required><option value="">Choose from below...</option><option>Yes</option><option>No</option></select></div>
+          <div class="gf-field gf-half gf-labelled"><label for="lp-childsupport">Any child support collections reported on credit?</label><select id="lp-childsupport" name="child_support_collections" required><option value="">Choose from below...</option><option>Yes</option><option>No</option></select></div>
+        </div>
+        <div class="gf-footer gf-footer-left"><button type="submit" class="gf-button">Apply Now</button></div>
+        <div class="form-status" role="status"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!--#include landing-body-->

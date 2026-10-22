@@ -613,3 +613,52 @@ figure.testimonial-card, .testimonial-card blockquote { margin: 0; }
 .gf-button-secondary:hover { background: #f5f5f5; }
 @media (max-width: 640px) { .gf-grid.gf-grid-2 { grid-template-columns: 1fr; } .gf-grid-2 .gf-field.gf-half { grid-column: auto; } .modal-box h2 { font-size: 26px; } .modal-overlay { padding: 20px 10px; } .modal-box { padding: 24px 18px; } }
 .program-card { padding-bottom: 60px; }  /* live card has a trailing empty <p> (20px) */
+
+/* ---------- Legal pages (live: 900px centered column, #333 42px H1, plain uppercase headings) ---------- */
+.legal-body { max-width: 900px; margin: 0 auto; }
+.legal-body h1 { color: #333; font-size: 42px; line-height: 50.4px; margin: 0 0 20px; }
+.legal-updated { font-size: 14px; line-height: 19.6px; color: #999; margin: 0 0 20px; }
+.legal-body p { margin: 0 0 20px; }
+.legal-body .legal-h { font-size: 16px; line-height: 24px; font-weight: 400; color: #000; margin: 20px 0; }
+.legal-body ul { list-style: disc; padding-left: 30px; margin: 20px 0; }
+.legal-body strong { font-weight: 700; }
+.legal-body a { color: #1E87F0; }
+.legal-body a:hover { text-decoration: underline; }
+@media (max-width: 640px) { .legal-body h1 { font-size: 32px; line-height: 40px; } }
+.legal-body ul.spaced li + li { margin-top: 20px; }
+.legal-body > :last-child { margin-bottom: 0; }
+
+/* ---------- Landing pages (/get-equipment-financing/, -2, thank-you funnel) ---------- */
+.landing-header .container { height: 80px; }
+.landing-header .main-nav ul a { font-size: 16px; line-height: 24px; height: auto; color: #000; }
+.landing-header .main-nav ul { gap: 20px; }
+.landing-header .main-nav ul a:hover { color: #666; }
+.landing-hero { padding: 140px 0; background-position: center; }
+.landing-card { width: 580px; max-width: 100%; border-radius: 20px; padding: 20px; color: #fff;
+  background: linear-gradient(90deg, #366797 0%, #0388F7 74%); box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
+.landing-card h1 { font-size: 32px; line-height: 41.6px; margin: 0 0 20px; }
+.landing-card .landing-sub { font-size: 19.2px; line-height: 28.8px; font-weight: 500; color: #fff; margin: 0 0 40px; }
+.landing-card .gf-checks label { color: #fff; }
+.landing-card .gf-labelled label { color: #fff; font-size: 16px; font-weight: 700; }
+.landing-card .form-status.error { background: #fff; }
+.landing-card .gf-footer { margin-top: 20px; }
+.container.container-expand { max-width: none; }
+.landing-card.landing-card-wide { width: calc((100% + 40px) * 2 / 3 - 40px); }
+.landing-card-wide h1 { font-size: 38.4px; line-height: 49.92px; }
+.landing-card-wide .landing-sub { border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 20px; margin-bottom: 20px; font-size: 16px; line-height: 24px; font-weight: 400; }
+.thanks-hero { padding: 140px 0; }
+.thanks-hero h1 { font-size: 38.4px; line-height: 49.92px; margin: 40px 0 68px; }
+.steps-fade { background: linear-gradient(#fff 0%, #fff 65%, #FAFAFA 65%, #FAFAFA 100%); }
+@media (max-width: 959px) {
+  .landing-hero, .thanks-hero { padding: 60px 0; }
+  .landing-card.landing-card-wide { width: 100%; }
+  .landing-card h1, .landing-card-wide h1 { font-size: 28px; line-height: 36px; }
+  .thanks-hero h1 { font-size: 30px; line-height: 40px; margin-bottom: 20px; }
+  .landing-header .container { height: 60px; }
+}
+.landing-card .gf-grid.gf-grid-2 { column-gap: 10px; }
+.landing-card .gf-footer { margin-top: 23px; padding-bottom: 24px; }
+.landing-card-wide .gf-grid.gf-grid-2 { column-gap: 23px; }
+.landing-card-wide .landing-sub { padding-bottom: 25px; }
+.landing-card-wide .gf-footer { margin-top: 22px; padding-bottom: 24px; }
+.landing-card-wide .gf-labelled label { min-height: 40px; }
